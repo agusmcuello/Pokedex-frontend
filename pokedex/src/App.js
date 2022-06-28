@@ -1,11 +1,20 @@
-import logo from "./logo.svg";
 import "./App.css";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ListaPokemon from "./Componentes/ListaPokemon/ListaPokemon";
+import Bulbasaur from "./Componentes/Materiales/bulbasaur.png";
+import Charmander from "./Componentes/Materiales/charmander.png";
+import Squirtle from "./Componentes/Materiales/squirtle.png";
+import Butterfree from "./Componentes/Materiales/butterfree.png";
+import Pikachu from "./Componentes/Materiales/pikachu.png";
 
 function App() {
   const listaPokemon = [
     {
       nombre: "Bulbasaur",
-      id: 001,
+      color: "rgb(116, 203, 72)",
+      icono: "../Materiales/bulbasaur.png",
+      id: "001",
       tipo: "grass",
       tipoDos: "poison",
       weight: "6,9kg",
@@ -14,20 +23,20 @@ function App() {
       movimientoDos: "Overgrow",
       descripcion:
         "There is a plant seed on its back right from the day this Pokemon is bron. The seed slowly grows larger",
-      estadisticas: [
-        {
-          hp: "045",
-          atk: "049",
-          def: "049",
-          satk: "065",
-          sdef: "065",
-          spd: "045",
-        },
-      ],
+      estadisticas: {
+        hp: "045",
+        atk: "049",
+        def: "049",
+        satk: "065",
+        sdef: "065",
+        spd: "045",
+      },
     },
     {
       nombre: "Charmander",
-      id: 004,
+      icono: { Charmander },
+      color: "rgb(116, 2, 72)",
+      id: "004",
       tipo: "fire",
       weight: "8,5kg",
       height: "0,6m",
@@ -48,7 +57,8 @@ function App() {
     },
     {
       nombre: "Squirtle",
-      id: 007,
+      icono: { Squirtle },
+      id: "007",
       tipo: "water",
       weight: "9,0kg",
       height: "0,5m",
@@ -69,7 +79,8 @@ function App() {
     },
     {
       nombre: "Butterfree",
-      id: 012,
+      icono: { Butterfree },
+      id: "012",
       tipo: "bug",
       tipoDos: "flying",
       weight: "32,0kg",
@@ -91,7 +102,9 @@ function App() {
     },
     {
       nombre: "Pikachu",
-      id: 025,
+      icono: { Pikachu },
+      color: "#74CB48",
+      id: "025",
       tipo: "electric",
       weight: "6,0kg",
       height: "0,4m",
@@ -112,7 +125,9 @@ function App() {
     },
     {
       nombre: "Gastly",
-      id: 092,
+      icono: { Bulbasaur },
+      color: "#74CB48",
+      id: "092",
       tipo: "ghost",
       tipoDos: "type",
       weight: "0.1kg",
@@ -133,7 +148,8 @@ function App() {
     },
     {
       nombre: "Ditto",
-      id: 132,
+      icono: { Bulbasaur },
+      id: "132",
       tipo: "normal",
       weight: "4kg",
       height: "0,3m",
@@ -154,7 +170,8 @@ function App() {
     },
     {
       nombre: "Mew",
-      id: 152,
+      icono: { Bulbasaur },
+      id: "152",
       tipo: "psychic",
       weight: "4kg",
       height: "0,4m",
@@ -174,7 +191,8 @@ function App() {
     },
     {
       nombre: "Aron",
-      id: 304,
+      icono: { Bulbasaur },
+      id: "304",
       tipo: "steel",
       tipoDos: "rock",
       weight: "60g",
@@ -195,7 +213,21 @@ function App() {
       ],
     },
   ];
-  return <div className="App"></div>;
+
+  return (
+    <div className="App">
+      <React.StrictMode>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={<ListaPokemon listaPokemon={listaPokemon} />}
+            ></Route>
+          </Routes>
+        </BrowserRouter>
+      </React.StrictMode>
+    </div>
+  );
 }
 
 export default App;
