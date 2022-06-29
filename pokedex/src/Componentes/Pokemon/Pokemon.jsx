@@ -2,10 +2,15 @@ import React from "react";
 import "./Pokemon.css";
 import { Link } from "react-router-dom";
 
-const Pokemon = ({ pokemon }) => {
+const Pokemon = ({ pokemon, guardarPokemon }) => {
   const icono = require(`../Materiales/${pokemon.nombre.toLowerCase()}.png`);
   return (
-    <Link key={pokemon.id} className="link" to="/DetallePokemon">
+    <Link
+      key={pokemon.id}
+      className="link"
+      onClick={() => guardarPokemon(pokemon)}
+      to="/DetallePokemon"
+    >
       <div style={{ borderColor: pokemon.color }} className="tarjetaPokemon">
         <p id="id" style={{ color: pokemon.color }} className="id">
           {pokemon.id}

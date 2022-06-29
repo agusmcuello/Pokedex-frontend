@@ -1,5 +1,6 @@
 *{
     margin: 0;
+    font-family: 'Poppins', sans-serif;
 }
 .contenedorLista{
     width: 100%;
@@ -21,10 +22,15 @@ header{
 .headerIzq{
     height: 43%;
     display: flex;
-    margin-left: 35%;
+    margin-left: 32%;
     margin-top: 5%;
     background: none;
     border: none;
+}
+.textoAdvertencia{
+    width: 390px;
+    text-align: center;
+    margin-top: 30%;
 }
 
 .pokedex{
@@ -45,5 +51,5 @@ nav{
     width: 96%;
     text-align: center;
     margin-left: 2%;
-    font-family: "FontAwesome";
+    font-family: 'Poppins', sans-serif;
 }

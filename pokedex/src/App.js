@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ListaPokemon from "./Componentes/ListaPokemon/ListaPokemon";
 import DetallePokemon from "./Componentes/DetallePokemon/DetallePokemon";
+import { useState } from "react";
 
 function App() {
   const listaPokemon = [
@@ -11,8 +12,9 @@ function App() {
       color: "#74CB48",
       icono: "../Materiales/bulbasaur.png",
       id: "#001",
-      tipo: "grass",
-      tipoDos: "poison",
+      tipo: "Grass",
+      tipoDos: "Poison",
+      tipoDosColor: "#A43E9E",
       weight: "6,9kg",
       height: "0,7m",
       movimiento: "Chlorophyll",
@@ -32,7 +34,7 @@ function App() {
       nombre: "Charmander",
       color: "#F57D31",
       id: "#004",
-      tipo: "fire",
+      tipo: "Fire",
       weight: "8,5kg",
       height: "0,6m",
       movimiento: "Mega-Punch",
@@ -54,7 +56,7 @@ function App() {
       nombre: "Squirtle",
       color: "#6493EB",
       id: "#007",
-      tipo: "water",
+      tipo: "Water",
       weight: "9,0kg",
       height: "0,5m",
       movimiento: "Torrent",
@@ -76,8 +78,9 @@ function App() {
       nombre: "Butterfree",
       color: "#A7B723",
       id: "#012",
-      tipo: "bug",
-      tipoDos: "flying",
+      tipo: "Bug",
+      tipoDos: "Flying",
+      tipoDosColor: "#A891EC",
       weight: "32,0kg",
       height: "1,1m",
       movimiento: "Compound-Eyes",
@@ -99,7 +102,7 @@ function App() {
       nombre: "Pikachu",
       color: "#F9CF30",
       id: "#025",
-      tipo: "electric",
+      tipo: "Electric",
       weight: "6,0kg",
       height: "0,4m",
       movimiento: "Mega-Punch",
@@ -121,8 +124,9 @@ function App() {
       nombre: "Gastly",
       color: "#70559B",
       id: "#092",
-      tipo: "ghost",
-      tipoDos: "type",
+      tipo: "Ghost",
+      tipoDos: "Dark",
+      tipoDosColor: "#75574C",
       weight: "0.1kg",
       height: "1,3m",
       movimiento: "Levitate",
@@ -143,7 +147,7 @@ function App() {
       nombre: "Ditto",
       color: "#AAA67F",
       id: "#132",
-      tipo: "normal",
+      tipo: "Normal",
       weight: "4kg",
       height: "0,3m",
       movimiento: "Limber",
@@ -165,7 +169,7 @@ function App() {
       nombre: "Mew",
       color: "#FB5584",
       id: "#152",
-      tipo: "psychic",
+      tipo: "Psychic",
       weight: "4kg",
       height: "0,4m",
       movimiento: "Synchronize",
@@ -186,8 +190,9 @@ function App() {
       nombre: "Aron",
       color: "#B7B9D0",
       id: "#304",
-      tipo: "steel",
-      tipoDos: "rock",
+      tipo: "Steel",
+      tipoDos: "Rock",
+      tipoDosColor: "#B69E31",
       weight: "60g",
       height: "0,4m",
       movimiento: "Sturdy",
@@ -207,6 +212,13 @@ function App() {
     },
   ];
 
+  const [pokemon, setPokemon] = useState();
+
+  const guardarPokemon = (nuevopokemon) => {
+    console.log(pokemon, nuevopokemon);
+    setPokemon(nuevopokemon);
+  };
+
   return (
     <div className="App">
       <React.StrictMode>
@@ -214,11 +226,16 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<ListaPokemon listaPokemon={listaPokemon} />}
+              element={
+                <ListaPokemon
+                  listaPokemon={listaPokemon}
+                  guardarPokemon={guardarPokemon}
+                />
+              }
             ></Route>
             <Route
               path="DetallePokemon"
-              element={<DetallePokemon listaPokemon={listaPokemon} />}
+              element={<DetallePokemon pokemon={pokemon} />}
             ></Route>
           </Routes>
         </BrowserRouter>

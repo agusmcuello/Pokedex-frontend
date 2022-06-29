@@ -5,25 +5,22 @@ import Pokemon from "../Pokemon/Pokemon";
 import flecha from "../Materiales/Arrow.svg";
 import { useState } from "react";
 
-function ListaPokemon({ listaPokemon }) {
-  const [nombre, setNombre] = useState("");
+function ListaPokemon({ listaPokemon, guardarPokemon }) {
   const [foundPokemon, setFoundPokemon] = useState(listaPokemon);
 
   const mostrarPokemones = foundPokemon.map((pokemon) => (
-    <Pokemon key={pokemon.id} pokemon={pokemon} />
+    <Pokemon
+      guardarPokemon={guardarPokemon}
+      key={pokemon.id}
+      pokemon={pokemon}
+    />
   ));
   const filter = (e) => {
     const keyword = e.target.value;
-
-    if (keyword !== "") {
-      const results = listaPokemon.filter((pokemon) => {
-        return pokemon.nombre.toLowerCase().startsWith(keyword.toLowerCase());
-      });
-      setFoundPokemon(results);
-    } else {
-      setFoundPokemon(listaPokemon);
-    }
-    setNombre(keyword);
+    const results = [...listaPokemon].filter((pokemon) => {
+      return pokemon.nombre.toLowerCase().includes(keyword.toLowerCase());
+    });
+    setFoundPokemon(results);
   };
   const pokemonesAlfabeto = () => {
     const arrayNuevo = [...foundPokemon].sort((a, b) => {
@@ -53,12 +50,12 @@ function ListaPokemon({ listaPokemon }) {
         <h1 className="pokedex">Pokédex</h1>
         <button
           onClick={
-            foundPokemon[0].id !== "#001" ? pokemonesId : pokemonesAlfabeto
+            foundPokemon[0]?.id !== "#001" ? pokemonesId : pokemonesAlfabeto
           }
           className="headerIzq"
         >
           <h4 className="numeral">
-            {foundPokemon[0].id === "#001" ? "#" : "a/z"}
+            {foundPokemon[0]?.id === "#001" ? "#" : "a/z"}
           </h4>
           <img src={flecha} width="15px" height="25px" alt="flecha" />
         </button>
@@ -68,11 +65,18 @@ function ListaPokemon({ listaPokemon }) {
           className="buscador"
           placeholder="Buscar"
           type="search"
-          value={nombre}
           onChange={filter}
         />
       </nav>
-      {mostrarPokemones}
+      {foundPokemon.length ? (
+        mostrarPokemones
+      ) : (
+        <div className="textoAdvertencia">
+          <p>
+            <b>No se encontró ningun Pokemon con ese nombre</b>
+          </p>
+        </div>
+      )}
     </div>
   );
 }

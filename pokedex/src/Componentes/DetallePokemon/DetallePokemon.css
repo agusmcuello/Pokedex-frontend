@@ -1,0 +1,107 @@
+.contenedorDetalle{
+    height: 600px;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.headerPokemon{
+    width: 100%;
+    display: flex;
+    color: white;
+    align-items: center;
+    margin-top: 3%
+}
+.headerArrow{
+    margin-left: 5%;
+    filter: invert(100%);
+}
+.headerTitle{
+    margin-left: 6%;
+}
+.contenedorId{
+    width: 100%;
+    text-align: right;
+    margin-right: 7%;
+}
+
+.contenedorInfo{
+    background-color: white;
+    width: 98%;
+    margin-top: 52%;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.botonesTipo{
+    color: white;
+    border-radius: 1.5rem;
+    border: 1px solid;
+    box-shadow: 0.5px 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.5);
+}
+h3{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+#botonUno{
+    margin-right: 10%;
+}
+#botonDos{
+    margin-left: 10%;
+}
+.contenedorBotones{
+    display: flex;
+    margin-top: 15%;
+}
+.pokebola{
+    position: absolute;
+    z-index: 0;
+    margin-left:17%;
+    margin-top: 2%;
+    opacity: 0.2;
+    width:220px;
+    height:210px;
+    filter: invert(1);
+}
+.imagenPokemon{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    z-index: 1;
+    margin-top: 23%;
+}
+.caracteristicas{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: small;
+}
+.caracteristicas p{
+    font-size: x-small;
+    color: rgba(0, 0, 0, 0.5);
+    float: inline-end;
+    
+}
+.hola{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+.descripcion{
+    margin-top: 5%;
+    font-size: 12px;
+    margin-left: 5%;
+}
+hr{ 
+  
+    border:         none;
+    border-left:    1px solid hsla(200, 10%, 50%,100);
+    height:         100%;
+    width:          1px;
+    border-color: rgba(0, 0, 0, 0.5);      
+}
+.iconoWH{
+    margin-right: 7%;
+}
