@@ -12,7 +12,6 @@ function ListaPokemon({ listaPokemon }) {
   const mostrarPokemones = foundPokemon.map((pokemon) => (
     <Pokemon key={pokemon.id} pokemon={pokemon} />
   ));
-
   const filter = (e) => {
     const keyword = e.target.value;
 

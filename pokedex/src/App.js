@@ -216,7 +216,10 @@ function App() {
               path="/"
               element={<ListaPokemon listaPokemon={listaPokemon} />}
             ></Route>
-            <Route path="DetallePokemon" element={<DetallePokemon />}></Route>
+            <Route
+              path="DetallePokemon"
+              element={<DetallePokemon listaPokemon={listaPokemon} />}
+            ></Route>
           </Routes>
         </BrowserRouter>
       </React.StrictMode>
