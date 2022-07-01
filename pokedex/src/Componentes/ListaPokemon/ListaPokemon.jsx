@@ -71,7 +71,10 @@ function ListaPokemon({ listaPokemon }) {
       ) : (
         <div className="textoAdvertencia">
           <p>
-            <b>No se encontró ningun Pokemon con ese nombre</b>
+            <b>
+              No se encontró ningun Pokemon <br />
+              con ese nombre
+            </b>
           </p>
         </div>
       )}
