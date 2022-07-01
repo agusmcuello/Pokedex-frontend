@@ -21,14 +21,12 @@ function App() {
       movimientoDos: "Overgrow",
       descripcion:
         "There is a plant seed on its back right from the day this Pokemon is bron. The seed slowly grows larger",
-      estadisticas: {
-        hp: "045",
-        atk: "049",
-        def: "049",
-        satk: "065",
-        sdef: "065",
-        spd: "045",
-      },
+      hp: "045",
+      atk: "049",
+      def: "049",
+      satk: "065",
+      sdef: "065",
+      spd: "045",
     },
     {
       nombre: "Charmander",
@@ -41,16 +39,12 @@ function App() {
       movimientoDos: "Fire-Punch",
       descripcion:
         "It has a preference for hot things. When it rains, steam is said to sopaut from the tip of its tail",
-      estadisticas: [
-        {
-          hp: "039",
-          atk: "052",
-          def: "043",
-          satk: "060",
-          sdef: "050",
-          spd: "065",
-        },
-      ],
+      hp: "039",
+      atk: "052",
+      def: "043",
+      satk: "060",
+      sdef: "050",
+      spd: "065",
     },
     {
       nombre: "Squirtle",
@@ -63,16 +57,12 @@ function App() {
       movimientoDos: "Rain-Dish",
       descripcion:
         "When it retracts its long neck into its shell, it squirts out water with vigorus force",
-      estadisticas: [
-        {
-          hp: "044",
-          atk: "048",
-          def: "065",
-          satk: "050",
-          sdef: "064",
-          spd: "043",
-        },
-      ],
+      hp: "044",
+      atk: "048",
+      def: "065",
+      satk: "050",
+      sdef: "064",
+      spd: "043",
     },
     {
       nombre: "Butterfree",
@@ -83,20 +73,16 @@ function App() {
       tipoDosColor: "#A891EC",
       weight: "32,0kg",
       height: "1,1m",
-      movimiento: "Compound-Eyes",
+      movimiento: "Compound",
       movimientoDos: "Tinted-Lens",
       descripcion:
         "In batlle, it flaps its wings at great speed to release highly toxic dust into the air",
-      estadisticas: [
-        {
-          hp: "060",
-          atk: "045",
-          def: "050",
-          satk: "090",
-          sdef: "080",
-          spd: "070",
-        },
-      ],
+      hp: "060",
+      atk: "045",
+      def: "050",
+      satk: "090",
+      sdef: "080",
+      spd: "070",
     },
     {
       nombre: "Pikachu",
@@ -109,16 +95,12 @@ function App() {
       movimientoDos: "Pay-Day",
       descripcion:
         "Pikachu that can generate powerful electricity have cheek sacs that are extra soft and super stretchy",
-      estadisticas: [
-        {
-          hp: "035",
-          atk: "055",
-          def: "040",
-          satk: "050",
-          sdef: "050",
-          spd: "090",
-        },
-      ],
+      hp: "035",
+      atk: "055",
+      def: "040",
+      satk: "050",
+      sdef: "050",
+      spd: "090",
     },
     {
       nombre: "Gastly",
@@ -132,16 +114,12 @@ function App() {
       movimiento: "Levitate",
       descripcion:
         "Born from grases, anyone would faint if enguelted by its gaseous body, which contains posion",
-      estadisticas: [
-        {
-          hp: "030",
-          atk: "035",
-          def: "030",
-          satk: "100",
-          sdef: "035",
-          spd: "080",
-        },
-      ],
+      hp: "030",
+      atk: "035",
+      def: "030",
+      satk: "100",
+      sdef: "035",
+      spd: "080",
     },
     {
       nombre: "Ditto",
@@ -154,16 +132,12 @@ function App() {
       movimientoDos: "imposter",
       descripcion:
         "it can reconstitute its entire cellular structure to change into what it sees, but it retunrs to normal when it relaxes",
-      estadisticas: [
-        {
-          hp: "048",
-          atk: "048",
-          def: "048",
-          satk: "048",
-          sdef: "048",
-          spd: "048",
-        },
-      ],
+      hp: "048",
+      atk: "048",
+      def: "048",
+      satk: "048",
+      sdef: "048",
+      spd: "048",
     },
     {
       nombre: "Mew",
@@ -175,16 +149,12 @@ function App() {
       movimiento: "Synchronize",
       descripcion:
         "When viewed through a microscope, this Poekmons short, fien, delicate hair can be seen",
-      estadisticas: [
-        {
-          hp: "100",
-          atk: "100",
-          def: "100",
-          satk: "100",
-          sdef: "100",
-          spd: "100",
-        },
-      ],
+      hp: "100",
+      atk: "100",
+      def: "100",
+      satk: "100",
+      sdef: "100",
+      spd: "100",
     },
     {
       nombre: "Aron",
@@ -199,25 +169,19 @@ function App() {
       movimientoDos: "Rock-Head",
       descripcion:
         "it eats iron ore - and sometimes railroad tracks - to build up the steel armor that prostects its body",
-      estadisticas: [
-        {
-          hp: "050",
-          atk: "070",
-          def: "100",
-          satk: "040",
-          sdef: "040",
-          spd: "030",
-        },
-      ],
+      hp: "050",
+      atk: "070",
+      def: "100",
+      satk: "040",
+      sdef: "040",
+      spd: "030",
     },
   ];
 
-  const [pokemon, setPokemon] = useState();
-
-  const guardarPokemon = (nuevopokemon) => {
-    console.log(pokemon, nuevopokemon);
+  /*const guardarPokemon = (nuevopokemon) => {
+    console.log(nuevopokemon);
     setPokemon(nuevopokemon);
-  };
+  }; // 10 puntos por el esfuerzo*/
 
   return (
     <div className="App">
@@ -226,16 +190,11 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={
-                <ListaPokemon
-                  listaPokemon={listaPokemon}
-                  guardarPokemon={guardarPokemon}
-                />
-              }
+              element={<ListaPokemon listaPokemon={listaPokemon} />}
             ></Route>
             <Route
-              path="DetallePokemon"
-              element={<DetallePokemon pokemon={pokemon} />}
+              path="DetallePokemon/:nombrePokemon"
+              element={<DetallePokemon listaPokemon={listaPokemon} />}
             ></Route>
           </Routes>
         </BrowserRouter>

@@ -4,17 +4,46 @@ import flecha from "../Materiales/arrow-left.svg";
 import peso from "../Materiales/Weight.svg";
 import altura from "../Materiales/Height.svg";
 import pokebola from "../Materiales/Pokeball.png";
-function DetallePokemon({ pokemon }) {
+import { Link, useParams } from "react-router-dom";
+import frame from "../Materiales/Frame.svg";
+
+function DetallePokemon({ listaPokemon }) {
+  const { nombrePokemon } = useParams();
+  const pokemonIndex = listaPokemon.findIndex(
+    (p) => p.nombre.toLowerCase() === nombrePokemon.toLowerCase()
+  );
+  const pokemon = listaPokemon[pokemonIndex];
   const icono = require(`../Materiales/${pokemon.nombre.toLowerCase()}.png`);
   return (
     <div
       style={{ backgroundColor: pokemon.color, borderColor: pokemon.color }}
       className="contenedorDetalle"
     >
+      {pokemonIndex != 0 && (
+        <Link
+          className="linkUno"
+          to={`/DetallePokemon/${listaPokemon[pokemonIndex - 1].nombre}`}
+        >
+          <img className="frameDos" src={frame} alt="flechaDos" />
+        </Link>
+      )}
+      {pokemonIndex != 8 && (
+        <Link
+          className="linkDos"
+          to={`/DetallePokemon/${listaPokemon[pokemonIndex + 1].nombre}`}
+        >
+          <img className="frame" src={frame} alt="flecha" />
+        </Link>
+      )}
       <img className="pokebola" src={pokebola} alt="" />
       <div className="headerPokemon">
-        <img className="headerArrow" src={flecha} alt="flecha" />
-        <h2 className="headerTitle">{pokemon.nombre}</h2>
+        <Link to="/">
+          {" "}
+          <img className="headerArrow" src={flecha} alt="flecha" />
+        </Link>
+        <h2 className="headerTitle">
+          <b>{pokemon.nombre}</b>
+        </h2>
         <div className="contenedorId">
           <span className="headerId">
             <b>{pokemon.id}</b>
@@ -49,7 +78,9 @@ function DetallePokemon({ pokemon }) {
             ""
           )}
         </div>
-        <h3 style={{ color: pokemon.color }}>About</h3>
+        <h4 className="about" style={{ color: pokemon.color }}>
+          About
+        </h4>
         <div className="caracteristicas">
           <div className="hola">
             <img className="iconoWH" src={peso} alt="iconoPeso" />
@@ -74,7 +105,176 @@ function DetallePokemon({ pokemon }) {
           </div>
         </div>
         <p className="descripcion">{pokemon.descripcion}</p>
-        <h3 style={{ color: pokemon.color }}>Base States</h3>
+        <h4 className="baseStates" style={{ color: pokemon.color }}>
+          Base States
+        </h4>
+        <hr className="hrEstadisticas" />
+        <div className="contenedorEstadistica">
+          <div className="w3-container">
+            <div className="habilidadUno">
+              <div className="habilidad">
+                <p className="p" style={{ color: pokemon.color }}>
+                  HP
+                </p>
+              </div>
+              <div className="barra">
+                <span>{pokemon.hp}</span>
+                <div
+                  className="w3-light-grey"
+                  style={{
+                    height: "5px",
+                    width: "200px",
+                    borderRadius: "1rem",
+                  }}
+                >
+                  <div
+                    style={{
+                      backgroundColor: pokemon.color,
+                      height: "5px",
+                      width: `${pokemon.hp}%`,
+                      borderRadius: "1rem",
+                    }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div className="habilidadUno">
+              <div className="habilidad">
+                <p className="p" style={{ color: pokemon.color }}>
+                  ATK
+                </p>
+              </div>
+              <div className="barra">
+                <span>{pokemon.atk}</span>
+                <div
+                  className="w3-light-grey"
+                  style={{
+                    height: "5px",
+                    width: "200px",
+                    borderRadius: "1rem",
+                  }}
+                >
+                  <div
+                    style={{
+                      backgroundColor: pokemon.color,
+                      height: "5px",
+                      width: `${pokemon.atk}%`,
+                      borderRadius: "1rem",
+                    }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div className="habilidadUno">
+              <div className="habilidad">
+                <p className="p" style={{ color: pokemon.color }}>
+                  DEF
+                </p>
+              </div>
+              <div className="barra">
+                <span>{pokemon.def}</span>
+                <div
+                  className="w3-light-grey"
+                  style={{
+                    height: "5px",
+                    width: "200px",
+                    borderRadius: "1rem",
+                  }}
+                >
+                  <div
+                    style={{
+                      backgroundColor: pokemon.color,
+                      height: "5px",
+                      width: `${pokemon.def}%`,
+                      borderRadius: "1rem",
+                    }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div className="habilidadUno">
+              <div className="habilidad">
+                <p className="p" style={{ color: pokemon.color }}>
+                  SATK
+                </p>
+              </div>
+              <div className="barra">
+                <span>{pokemon.satk}</span>
+                <div
+                  className="w3-light-grey"
+                  style={{
+                    height: "5px",
+                    width: "200px",
+                    borderRadius: "1rem",
+                  }}
+                >
+                  <div
+                    style={{
+                      backgroundColor: pokemon.color,
+                      height: "5px",
+                      width: `${pokemon.satk}%`,
+                      borderRadius: "1rem",
+                    }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div className="habilidadUno">
+              <div className="habilidad">
+                <p className="p" style={{ color: pokemon.color }}>
+                  SDEF
+                </p>
+              </div>
+              <div className="barra">
+                <span>{pokemon.sdef}</span>
+                <div
+                  className="w3-light-grey"
+                  style={{
+                    height: "5px",
+                    width: "200px",
+                    borderRadius: "1rem",
+                  }}
+                >
+                  <div
+                    style={{
+                      backgroundColor: pokemon.color,
+                      height: "5px",
+                      width: `${pokemon.sdef}%`,
+                      borderRadius: "1rem",
+                    }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div className="habilidadUno">
+              <div className="habilidad">
+                <p className="p" style={{ color: pokemon.color }}>
+                  SPD
+                </p>
+              </div>
+              <div className="barra" id="barraInferior">
+                <span>{pokemon.spd}</span>
+                <div
+                  className="w3-light-grey"
+                  style={{
+                    height: "5px",
+                    width: "200px",
+                    borderRadius: "1rem",
+                  }}
+                >
+                  <div
+                    style={{
+                      backgroundColor: pokemon.color,
+                      height: "5px",
+                      width: `${pokemon.spd}%`,
+                      borderRadius: "1rem",
+                    }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

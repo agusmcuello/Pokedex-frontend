@@ -1,6 +1,5 @@
 *{
     margin: 0;
-    font-family: 'Poppins', sans-serif;
 }
 .contenedorLista{
     width: 100%;
@@ -14,6 +13,8 @@
     "pSiete pOcho pNueve";
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 0.5fr 2fr 2fr 2fr;
+    background-color: "#F7F7F7";
+    border-radius: 12px;
 }
 header{
     grid-area: header;
@@ -22,7 +23,7 @@ header{
 .headerIzq{
     height: 43%;
     display: flex;
-    margin-left: 32%;
+    margin-left: 25%;
     margin-top: 5%;
     background: none;
     border: none;
@@ -35,10 +36,11 @@ header{
 
 .pokedex{
     margin-left: 5%;
+    color: "#212121";
 }
 .imagenHeader{
     margin-left: 5%;
-    margin-top: 2%;
+    margin-top: 5.5%;
 }
 .numeral{
     margin-right: 10%;
@@ -52,4 +54,6 @@ nav{
     text-align: center;
     margin-left: 2%;
     font-family: 'Poppins', sans-serif;
+    border-radius: 0.5rem;
+    border-color: rgba(0, 0, 0, 0.2);
 }

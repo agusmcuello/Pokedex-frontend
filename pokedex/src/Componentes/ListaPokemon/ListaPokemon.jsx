@@ -5,15 +5,11 @@ import Pokemon from "../Pokemon/Pokemon";
 import flecha from "../Materiales/Arrow.svg";
 import { useState } from "react";
 
-function ListaPokemon({ listaPokemon, guardarPokemon }) {
+function ListaPokemon({ listaPokemon }) {
   const [foundPokemon, setFoundPokemon] = useState(listaPokemon);
 
   const mostrarPokemones = foundPokemon.map((pokemon) => (
-    <Pokemon
-      guardarPokemon={guardarPokemon}
-      key={pokemon.id}
-      pokemon={pokemon}
-    />
+    <Pokemon key={pokemon.id} pokemon={pokemon} />
   ));
   const filter = (e) => {
     const keyword = e.target.value;
@@ -43,11 +39,13 @@ function ListaPokemon({ listaPokemon, guardarPokemon }) {
         <img
           className="imagenHeader"
           src={pokeball}
-          width="30px"
-          height="32px"
+          width="32px"
+          height="34px"
           alt="Pokeball"
         />
-        <h1 className="pokedex">Pokédex</h1>
+        <h1 className="pokedex">
+          <b>Pokédex</b>
+        </h1>
         <button
           onClick={
             foundPokemon[0]?.id !== "#001" ? pokemonesId : pokemonesAlfabeto
@@ -63,7 +61,7 @@ function ListaPokemon({ listaPokemon, guardarPokemon }) {
       <nav>
         <input
           className="buscador"
-          placeholder="Buscar"
+          placeholder="🔎Buscar"
           type="search"
           onChange={filter}
         />

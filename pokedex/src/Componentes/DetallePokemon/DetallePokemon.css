@@ -1,5 +1,5 @@
 .contenedorDetalle{
-    height: 600px;
+    height: 700px;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
@@ -13,11 +13,11 @@
     margin-top: 3%
 }
 .headerArrow{
-    margin-left: 5%;
+    margin-left: 60%;
     filter: invert(100%);
 }
 .headerTitle{
-    margin-left: 6%;
+    margin-left: 10%;
 }
 .contenedorId{
     width: 100%;
@@ -28,7 +28,7 @@
 .contenedorInfo{
     background-color: white;
     width: 98%;
-    margin-top: 52%;
+    margin-top: 42%;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
@@ -40,9 +40,13 @@
     border: 1px solid;
     box-shadow: 0.5px 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.5);
 }
-h3{
+.about{
     margin-top: 5%;
     margin-bottom: 5%;
+}
+.baseState{
+    margin-top: 5%;
+    margin-bottom: 3%;
 }
 #botonUno{
     margin-right: 10%;
@@ -104,4 +108,71 @@ hr{
 }
 .iconoWH{
     margin-right: 7%;
+}
+.w3-container{
+    width: 100%;
+}
+.estadistica{
+    margin-top: 3%;
+}
+.w3-light-grey{
+    margin-top: 3%;
+    width: 300px;
+    margin-left: 5%;
+}
+#barraInferior{
+    margin-bottom: 6%;
+}
+.contenedorEstadistica{
+    width: 100%;
+    display: flex;
+}
+.habilidadUno{
+    width: 100%;
+    display: flex;
+}
+.barra{
+    width: 80%;
+    display: flex;
+}
+.habilidad{
+    width: 10%;
+    display: flex;
+    justify-content: end;
+    margin-right: 7%;
+}
+
+.hrEstadisticas{
+    border-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    height: 122px;
+    margin-top: 80%;
+    margin-right: 61%;
+}
+.frame{
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+}
+.frameDos{
+    filter: invert(1);
+    width: 20px;
+    height: 20px;
+    transform: scaleX(-1);
+}
+.linkDos{
+    position: absolute;
+    z-index: 2;
+    width: 25px;
+    height: 25px;
+    top: 25%;
+    right: 7%;
+}
+.linkUno{
+    position: absolute;
+    z-index: 2;
+    width: 25px;
+    height: 25px;
+    left: 7%;
+    top: 25%;
 }
