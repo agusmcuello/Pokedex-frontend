@@ -4,12 +4,39 @@ import pokeball from "../Materiales/Pokeball.png";
 import Pokemon from "../Pokemon/Pokemon";
 import flecha from "../Materiales/Arrow.svg";
 import { useState } from "react";
+import { useEffect } from "react";
+import Button from "@mui/joy/Button";
+import Link from "@mui/joy/Link";
 
-function ListaPokemon({ listaPokemon }) {
-  const [foundPokemon, setFoundPokemon] = useState(listaPokemon);
+function ListaPokemon() {
+  const [foundPokemon, setFoundPokemon] = useState([]);
+  const [listaPokemon, setListaPokemon] = useState([]);
+  useEffect(() => {
+    traerPokemon();
+  }, []);
+
+  const traerToken = () => {
+    return localStorage.getItem("token");
+  };
+  const traerPokemon = async () => {
+    try {
+      const token = traerToken();
+      const respuesta = await fetch("http://localhost:1234/pokemon", {
+        headers: { Authorization: token },
+      });
+      if (!respuesta.ok) {
+        throw new Error("Error en el servidor");
+      }
+      const pokemonFetch = await respuesta.json();
+      setListaPokemon(pokemonFetch);
+      setFoundPokemon(pokemonFetch);
+    } catch (error) {
+      console.log("No se pudo conectar con el back end");
+    }
+  };
 
   const mostrarPokemones = foundPokemon.map((pokemon) => (
-    <Pokemon key={pokemon.id} pokemon={pokemon} />
+    <Pokemon key={pokemon.id} pokemon={pokemon} traerPokemon={traerPokemon} />
   ));
   const filter = (e) => {
     const keyword = e.target.value;
@@ -46,6 +73,9 @@ function ListaPokemon({ listaPokemon }) {
         <h1 className="pokedex">
           <b>Pokédex</b>
         </h1>
+        <Link href="/login">
+          <Button>Login</Button>
+        </Link>
         <button
           onClick={
             foundPokemon[0]?.id !== "#001" ? pokemonesId : pokemonesAlfabeto

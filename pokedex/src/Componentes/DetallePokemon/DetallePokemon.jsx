@@ -6,36 +6,48 @@ import altura from "../Materiales/Height.svg";
 import pokebola from "../Materiales/Pokeball.png";
 import { Link, useParams } from "react-router-dom";
 import frame from "../Materiales/Frame.svg";
+import { useEffect, useState } from "react";
 
-function DetallePokemon({ listaPokemon }) {
+function DetallePokemon() {
   const { nombrePokemon } = useParams();
-  const pokemonIndex = listaPokemon.findIndex(
-    (p) => p.nombre.toLowerCase() === nombrePokemon.toLowerCase()
-  );
-  const pokemon = listaPokemon[pokemonIndex];
-  const icono = require(`../Materiales/${pokemon.nombre.toLowerCase()}.png`);
+  const [pokemon, setPokemon] = useState({});
+  useEffect(() => {
+    mostrarPokemon();
+  });
+  const mostrarPokemon = async () => {
+    try {
+      const respuesta = await fetch(
+        `http://localhost:1234/pokemon/${nombrePokemon}`
+      );
+      if (!respuesta.ok) {
+        throw new Error("Error en el servidor");
+      }
+      const pokemonFetch = await respuesta.json();
+      setPokemon(pokemonFetch);
+    } catch (error) {
+      console.log("No se pudo conectar con el back end");
+    }
+  };
+
+  const icono =
+    pokemon.nombre &&
+    require(`../Materiales/${pokemon.nombre.toLowerCase()}.png`);
   return (
     <div
       style={{ backgroundColor: pokemon.color, borderColor: pokemon.color }}
       className="contenedorDetalle"
     >
-      {pokemonIndex != 0 && (
-        <Link
-          className="linkUno"
-          to={`/DetallePokemon/${listaPokemon[pokemonIndex - 1].nombre}`}
-        >
+      {pokemon.prev && (
+        <Link className="linkUno" to={`/DetallePokemon/${pokemon.prev}`}>
           <img className="frameDos" src={frame} alt="flechaDos" />
         </Link>
       )}
-      {pokemonIndex != 8 && (
-        <Link
-          className="linkDos"
-          to={`/DetallePokemon/${listaPokemon[pokemonIndex + 1].nombre}`}
-        >
+      {pokemon.next && (
+        <Link className="linkDos" to={`/DetallePokemon/${pokemon.next}`}>
           <img className="frame" src={frame} alt="flecha" />
         </Link>
       )}
-      <img className="pokebola" src={pokebola} alt="" />
+      <img className="pokebola" src={pokebola} alt="pokebola" />
       <div className="headerPokemon">
         <Link to="/">
           {" "}
@@ -74,9 +86,7 @@ function DetallePokemon({ listaPokemon }) {
             >
               {pokemon.tipoDos}
             </button>
-          ) : (
-            ""
-          )}
+          ) : null}
         </div>
         <h4 className="about" style={{ color: pokemon.color }}>
           About
