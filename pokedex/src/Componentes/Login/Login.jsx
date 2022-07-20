@@ -27,14 +27,13 @@ function Login() {
 
   const checkLogin = async () => {
     try {
-      const respuesta = await fetch("http://localhost:1234/login", {
+      const respuesta = await fetch("http://localhost:8080/login", {
         method: "POST",
         body: JSON.stringify({ mail, password }),
         headers: {
           "Content-Type": "application/json",
         },
       });
-      alert(await respuesta.json());
       if (!respuesta.ok) {
         throw new Error("Error en el servidor");
       }

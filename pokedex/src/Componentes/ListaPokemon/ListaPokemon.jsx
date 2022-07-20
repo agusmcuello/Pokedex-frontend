@@ -21,9 +21,7 @@ function ListaPokemon() {
   const traerPokemon = async () => {
     try {
       const token = traerToken();
-      const respuesta = await fetch("http://localhost:1234/pokemon", {
-        headers: { Authorization: token },
-      });
+      const respuesta = await fetch("http://localhost:8080/pokemon");
       if (!respuesta.ok) {
         throw new Error("Error en el servidor");
       }

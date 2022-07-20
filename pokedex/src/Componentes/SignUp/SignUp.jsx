@@ -4,12 +4,11 @@ import Sheet from "@mui/joy/Sheet";
 import Typography from "@mui/joy/Typography";
 import TextField from "@mui/joy/TextField";
 import Button from "@mui/joy/Button";
-import Link from "@mui/joy/Link";
 
 function SignUp() {
   const checkRegister = async () => {
     try {
-      const respuesta = await fetch("http://localhost:1234/login");
+      const respuesta = await fetch("http://localhost:8080/login");
       if (!respuesta.ok) {
         throw new Error("Error en el servidor");
       }

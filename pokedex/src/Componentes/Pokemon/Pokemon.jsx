@@ -8,7 +8,7 @@ const Pokemon = ({ pokemon, traerPokemon }) => {
   const borrarPokemon = async () => {
     try {
       const respuesta = await fetch(
-        `http://localhost:1234/borrarPokemon/${pokemon.nombre}`,
+        `http://localhost:8080/borrarPokemon/${pokemon.nombre}`,
         { method: "DELETE", headers: { Authorization: token } }
       );
       traerPokemon();

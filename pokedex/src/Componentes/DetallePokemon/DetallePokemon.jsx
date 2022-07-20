@@ -17,7 +17,7 @@ function DetallePokemon() {
   const mostrarPokemon = async () => {
     try {
       const respuesta = await fetch(
-        `http://localhost:1234/pokemon/${nombrePokemon}`
+        `http://localhost:8080/pokemon/${nombrePokemon}`
       );
       if (!respuesta.ok) {
         throw new Error("Error en el servidor");
