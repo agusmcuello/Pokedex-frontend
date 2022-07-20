@@ -5,7 +5,6 @@ import Typography from "@mui/joy/Typography";
 import TextField from "@mui/joy/TextField";
 import Button from "@mui/joy/Button";
 import Link from "@mui/joy/Link";
-import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -35,6 +34,7 @@ function Login() {
           "Content-Type": "application/json",
         },
       });
+      alert(await respuesta.json());
       if (!respuesta.ok) {
         throw new Error("Error en el servidor");
       }

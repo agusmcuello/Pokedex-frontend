@@ -23,17 +23,29 @@ const Pokemon = ({ pokemon, traerPokemon }) => {
   };
   const icono = require(`../Materiales/${pokemon.nombre.toLowerCase()}.png`);
   return (
-    <div>
+    <div className="contenedorPokemon">
       <Button
         className="botonBorrar"
         onClick={borrarPokemon}
         style={{
           color: "white",
-          width: "10px",
+          top: "5%",
+          width: "18px",
+          height: "20px",
+          minHeight: "1px",
+          backgroundColor: "grey",
+          padding: "1px",
+          marginLeft: "5px",
           display: token ? "inline-block" : "none",
         }}
       >
-        x
+        <span
+          style={{
+            padding: "0px",
+          }}
+        >
+          x
+        </span>
       </Button>
       <Link
         key={pokemon.id}
@@ -41,9 +53,13 @@ const Pokemon = ({ pokemon, traerPokemon }) => {
         to={`/DetallePokemon/${pokemon.nombre.toLowerCase()}`}
       >
         <div style={{ borderColor: pokemon.color }} className="tarjetaPokemon">
-          <p id="id" style={{ color: pokemon.color }} className="id">
+          <div
+            id="id"
+            style={{ color: pokemon.color, borderColor: pokemon.color }}
+            className="id"
+          >
             {pokemon.id}
-          </p>
+          </div>
           <img className="iconoPokemon" src={icono} alt="iconoPokemon" />
           <div className="nombre" style={{ backgroundColor: pokemon.color }}>
             {pokemon.nombre}

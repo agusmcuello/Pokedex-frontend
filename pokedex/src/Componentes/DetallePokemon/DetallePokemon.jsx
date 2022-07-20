@@ -28,10 +28,17 @@ function DetallePokemon() {
       console.log("No se pudo conectar con el back end");
     }
   };
-
   const icono =
     pokemon.nombre &&
     require(`../Materiales/${pokemon.nombre.toLowerCase()}.png`);
+
+  const modificarPokemon = () => {
+    try {
+    } catch (error) {
+      console.log("");
+    }
+  };
+
   return (
     <div
       style={{ backgroundColor: pokemon.color, borderColor: pokemon.color }}

@@ -16,8 +16,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 0.5fr 2fr 2fr 2fr 2fr 2fr;
     background-color: rgb(137, 135, 135);
-    /* background-image:radial-gradient(rgb(56, 47, 47),rgb(116, 100, 100)); */
-    background-image:url(https://pbs.twimg.com/profile_images/1510267023170932738/DU17z4wo_400x400.jpg);
+    background-image:url(https://pbs.twimg.com/media/EkrLTLMXYAA97uU?format=jpg&name=large);
     filter: grayscale(25%);
     border-radius: 12px;
     margin-left: 35%;
@@ -29,21 +28,31 @@ header{
 .headerIzq{
     height: 43%;
     display: flex;
-    margin-left: 10%;
-    margin-top: 5%;
+    margin-left: 8%;
+    margin-top: 7%;
     background: none;
     border: none;
     filter: invert(1);
+    cursor: pointer;
 }
 .textoAdvertencia{
     width: 390px;
     text-align: center;
     margin-top: 30%;
 }
-
+@keyframes anim{
+    0% {color: #74CB48;} 
+   20% {color: #F57D31;} 
+   40% {color: #6493EB;} 
+   60% {color: #F9CF30;} 
+  80% {color: #FB5584;} 
+  100% {color: #74CB48;} 
+}   
 .pokedex{
     margin-left: 5%;
-    color: rgb(236, 236, 236);
+    animation-name: anim;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
 }
 .imagenHeader{
     display: block;
@@ -80,4 +89,8 @@ nav{
     margin-left: 2%;
     border-radius: 0.5rem;
     border-color: rgba(0, 0, 0, 0.2);
+}
+
+.textoLogin{
+    color: rgb(86, 83, 83);
 }

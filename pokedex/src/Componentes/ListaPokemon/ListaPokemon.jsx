@@ -64,6 +64,7 @@ function ListaPokemon() {
     <div className="contenedorLista">
       <header>
         <img
+          id="header"
           className="imagenHeader"
           src={pokeball}
           width="32px"
@@ -73,9 +74,26 @@ function ListaPokemon() {
         <h1 className="pokedex">
           <b>Pokédex</b>
         </h1>
-        <Link href="/login">
-          <Button>Login</Button>
-        </Link>
+        <div className="login">
+          <Link href="/login">
+            <Button
+              style={{
+                border: "1px solid rgb(236, 236, 236)",
+                borderRadius: "10px",
+                textDecoration: "none",
+                backgroundColor: "rgb(236, 236, 236)",
+                minHeight: "1px",
+                minWidth: "1px",
+                top: "28px",
+                left: "10px",
+                padding: "6px",
+              }}
+              className="botonLogin"
+            >
+              <span className="textoLogin">Login</span>
+            </Button>
+          </Link>
+        </div>
         <button
           onClick={
             foundPokemon[0]?.id !== "#001" ? pokemonesId : pokemonesAlfabeto
