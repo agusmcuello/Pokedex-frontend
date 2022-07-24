@@ -5,6 +5,7 @@ import ListaPokemon from "./Componentes/ListaPokemon/ListaPokemon";
 import DetallePokemon from "./Componentes/DetallePokemon/DetallePokemon";
 import Login from "./Componentes/Login/Login";
 import SignUp from "./Componentes/SignUp/SignUp";
+import AgregarPokemon from "./Componentes/AgregarPokemon/AgregarPokemon";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               path="DetallePokemon/:nombrePokemon"
               element={<DetallePokemon />}
             ></Route>
+            <Route path="/agregarPokemon" element={<AgregarPokemon/>}></Route>
           </Routes>
         </BrowserRouter>
       </React.StrictMode>

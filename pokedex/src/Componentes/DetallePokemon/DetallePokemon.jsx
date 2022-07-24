@@ -12,25 +12,25 @@ function DetallePokemon() {
   const { nombrePokemon } = useParams();
   const [pokemon, setPokemon] = useState({});
   useEffect(() => {
-    mostrarPokemon();
-  });
-  const mostrarPokemon = async () => {
-    try {
-      const respuesta = await fetch(
-        `http://localhost:8080/pokemon/${nombrePokemon}`
-      );
-      if (!respuesta.ok) {
-        throw new Error("Error en el servidor");
+    const mostrarPokemon = async () => {
+      try {
+        const respuesta = await fetch(
+          `http://localhost:8080/pokemon/${nombrePokemon}`
+        );
+        if (!respuesta.ok) {
+          throw new Error("Error en el servidor");
+        }
+        const pokemonFetch = await respuesta.json();
+        setPokemon(pokemonFetch);
+      } catch (error) {
+        console.log("No se pudo conectar con el back end");
       }
-      const pokemonFetch = await respuesta.json();
-      setPokemon(pokemonFetch);
-    } catch (error) {
-      console.log("No se pudo conectar con el back end");
-    }
-  };
+    };
+    mostrarPokemon();
+  },[nombrePokemon]);
   const icono =
-    pokemon.nombre &&
-    require(`../Materiales/${pokemon.nombre.toLowerCase()}.png`);
+    pokemon.name &&
+    require(`../Materiales/${pokemon.name.toLowerCase()}.png`);
 
   const modificarPokemon = () => {
     try {
@@ -61,11 +61,11 @@ function DetallePokemon() {
           <img className="headerArrow" src={flecha} alt="flecha" />
         </Link>
         <h2 className="headerTitle">
-          <b>{pokemon.nombre}</b>
+          <b>{pokemon.name}</b>
         </h2>
         <div className="contenedorId">
           <span className="headerId">
-            <b>{pokemon.id}</b>
+            <b>{pokemon.number}</b>
           </span>
         </div>
       </div>
@@ -80,18 +80,18 @@ function DetallePokemon() {
               borderColor: pokemon.color,
             }}
           >
-            {pokemon.tipo}
+            {pokemon.type}
           </button>
-          {pokemon.tipoDos ? (
+          {pokemon.type_two ? (
             <button
               className="botonesTipo"
               id="botonDos"
               style={{
-                backgroundColor: pokemon.tipoDosColor,
-                borderColor: pokemon.tipoDosColor,
+                backgroundColor: pokemon.type_two_color,
+                borderColor: pokemon.type_two_color,
               }}
             >
-              {pokemon.tipoDos}
+              {pokemon.type_two}
             </button>
           ) : null}
         </div>
@@ -115,13 +115,13 @@ function DetallePokemon() {
           </div>
           <hr />
           <div className="hola">
-            {pokemon.movimiento}
+            {pokemon.firstAbility}
             <br />
-            {pokemon.movimientoDos} <br />
+            {pokemon.secondAbility} <br />
             <p>Moves</p>
           </div>
         </div>
-        <p className="descripcion">{pokemon.descripcion}</p>
+        <p className="descripcion">{pokemon.description}</p>
         <h4 className="baseStates" style={{ color: pokemon.color }}>
           Base States
         </h4>
@@ -135,7 +135,7 @@ function DetallePokemon() {
                 </p>
               </div>
               <div className="barra">
-                <span>{pokemon.hp}</span>
+                <span className="numeroStats">{pokemon.hp}</span>
                 <div
                   className="w3-light-grey"
                   style={{
@@ -148,7 +148,7 @@ function DetallePokemon() {
                     style={{
                       backgroundColor: pokemon.color,
                       height: "5px",
-                      width: `${pokemon.hp}%`,
+                      width: `${pokemon.hp/2}%`,
                       borderRadius: "1rem",
                     }}
                   ></div>
@@ -162,7 +162,7 @@ function DetallePokemon() {
                 </p>
               </div>
               <div className="barra">
-                <span>{pokemon.atk}</span>
+                <span className="numeroStats">{pokemon.atk}</span>
                 <div
                   className="w3-light-grey"
                   style={{
@@ -175,7 +175,7 @@ function DetallePokemon() {
                     style={{
                       backgroundColor: pokemon.color,
                       height: "5px",
-                      width: `${pokemon.atk}%`,
+                      width: `${pokemon.atk/2}%`,
                       borderRadius: "1rem",
                     }}
                   ></div>
@@ -189,7 +189,7 @@ function DetallePokemon() {
                 </p>
               </div>
               <div className="barra">
-                <span>{pokemon.def}</span>
+                <span className="numeroStats">{pokemon.def}</span>
                 <div
                   className="w3-light-grey"
                   style={{
@@ -202,7 +202,7 @@ function DetallePokemon() {
                     style={{
                       backgroundColor: pokemon.color,
                       height: "5px",
-                      width: `${pokemon.def}%`,
+                      width: `${pokemon.def/2}%`,
                       borderRadius: "1rem",
                     }}
                   ></div>
@@ -216,7 +216,7 @@ function DetallePokemon() {
                 </p>
               </div>
               <div className="barra">
-                <span>{pokemon.satk}</span>
+                <span className="numeroStats">{pokemon.satk}</span>
                 <div
                   className="w3-light-grey"
                   style={{
@@ -229,7 +229,7 @@ function DetallePokemon() {
                     style={{
                       backgroundColor: pokemon.color,
                       height: "5px",
-                      width: `${pokemon.satk}%`,
+                      width: `${pokemon.satk/2}%`,
                       borderRadius: "1rem",
                     }}
                   ></div>
@@ -243,7 +243,7 @@ function DetallePokemon() {
                 </p>
               </div>
               <div className="barra">
-                <span>{pokemon.sdef}</span>
+                <span className="numeroStats">{pokemon.sdef}</span>
                 <div
                   className="w3-light-grey"
                   style={{
@@ -256,7 +256,7 @@ function DetallePokemon() {
                     style={{
                       backgroundColor: pokemon.color,
                       height: "5px",
-                      width: `${pokemon.sdef}%`,
+                      width: `${pokemon.sdef/2}%`,
                       borderRadius: "1rem",
                     }}
                   ></div>
@@ -270,7 +270,7 @@ function DetallePokemon() {
                 </p>
               </div>
               <div className="barra" id="barraInferior">
-                <span>{pokemon.spd}</span>
+                <span className="numeroStats">{pokemon.spd}</span>
                 <div
                   className="w3-light-grey"
                   style={{
@@ -283,7 +283,7 @@ function DetallePokemon() {
                     style={{
                       backgroundColor: pokemon.color,
                       height: "5px",
-                      width: `${pokemon.spd}%`,
+                      width: `${pokemon.spd/2}%`,
                       borderRadius: "1rem",
                     }}
                   ></div>

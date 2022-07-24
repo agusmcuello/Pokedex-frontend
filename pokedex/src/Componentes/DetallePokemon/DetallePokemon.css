@@ -58,16 +58,16 @@
 }
 .contenedorBotones{
     display: flex;
-    margin-top: 11%;
+    margin-top: 14%;
 }
 .pokebola{
     position: absolute;
     z-index: 0;
-    margin-left:6%;
-    margin-top: 2%;
+    margin-left:5%;
+    margin-top: 1%;
     opacity: 0.2;
-    width:220px;
-    height:210px;
+    width:230px;
+    height:220px;
     filter: invert(1);
 }
 .imagenPokemon{
@@ -146,6 +146,7 @@ hr{
 .barra{
     width: 80%;
     display: flex;
+    margin-left: 5px;
 }
 .habilidad{
     width: 10%;
@@ -177,8 +178,8 @@ hr{
     z-index: 2;
     width: 25px;
     height: 25px;
-    top: 37%;
-    right: 35%;
+    top: 30%;
+    right: 40%;
 }
 .linkUno{
     position: absolute;
@@ -186,5 +187,10 @@ hr{
     width: 25px;
     height: 25px;
     left: 37%;
-    top: 37%;
+    top: 30%;
+}
+.numeroStats{
+    font-size: small;
+    position: absolute;
+    left: 39.5%;
 }

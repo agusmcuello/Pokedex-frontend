@@ -8,7 +8,7 @@ const Pokemon = ({ pokemon, traerPokemon }) => {
   const borrarPokemon = async () => {
     try {
       const respuesta = await fetch(
-        `http://localhost:8080/borrarPokemon/${pokemon.nombre}`,
+        `http://localhost:8080/borrarPokemon/${pokemon.name}`,
         { method: "DELETE", headers: { Authorization: token } }
       );
       traerPokemon();
@@ -21,7 +21,7 @@ const Pokemon = ({ pokemon, traerPokemon }) => {
       console.log("No se pudo conectar con el back end");
     }
   };
-  const icono = require(`../Materiales/${pokemon.nombre.toLowerCase()}.png`);
+  const icono = require(`../Materiales/${pokemon.name.toLowerCase()}.png`);
   return (
     <div className="contenedorPokemon">
       <Button
@@ -50,7 +50,7 @@ const Pokemon = ({ pokemon, traerPokemon }) => {
       <Link
         key={pokemon.id}
         className="link"
-        to={`/DetallePokemon/${pokemon.nombre.toLowerCase()}`}
+        to={`/DetallePokemon/${pokemon.name.toLowerCase()}`}
       >
         <div style={{ borderColor: pokemon.color }} className="tarjetaPokemon">
           <div
@@ -58,11 +58,11 @@ const Pokemon = ({ pokemon, traerPokemon }) => {
             style={{ color: pokemon.color, borderColor: pokemon.color }}
             className="id"
           >
-            {pokemon.id}
+            {pokemon.number}
           </div>
           <img className="iconoPokemon" src={icono} alt="iconoPokemon" />
           <div className="nombre" style={{ backgroundColor: pokemon.color }}>
-            {pokemon.nombre}
+            {pokemon.name}
           </div>
         </div>
       </Link>

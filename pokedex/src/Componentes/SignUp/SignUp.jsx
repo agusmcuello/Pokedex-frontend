@@ -4,19 +4,52 @@ import Sheet from "@mui/joy/Sheet";
 import Typography from "@mui/joy/Typography";
 import TextField from "@mui/joy/TextField";
 import Button from "@mui/joy/Button";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
-  const checkRegister = async () => {
-    try {
-      const respuesta = await fetch("http://localhost:8080/login");
-      if (!respuesta.ok) {
-        throw new Error("Error en el servidor");
-      }
-      const usuarioRegistrado = await respuesta.json();
-    } catch (error) {
-      console.log("No se pudo conectar con el back end");
+  const [name, setName] = useState("");
+    const [mail, setMail] = useState("");
+    const [password, setPassword] = useState("");
+
+    let navigate = useNavigate();
+    
+    const handleChangeName = (e) => {
+      setName(e.target.value);
+    };
+
+    const handleChangeMail = (e) => {
+      setMail(e.target.value);
+    };
+    
+    const handleChangePassword = (e) => {
+      setPassword(e.target.value);
+    };
+
+    const guardarToken = (token) => {
+      localStorage.setItem("token", token);
+    };
+  
+const checkSingUp = async () => {
+  try {
+    const respuesta = await fetch("http://localhost:8080/register", {
+      method: "POST",
+      body: JSON.stringify({name, mail, password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!respuesta.ok) {
+      throw new Error("Error en el servidor");
     }
-  };
+    const usuarioRegistrado = await respuesta.json();
+    guardarToken(usuarioRegistrado.token);
+    navigate("/", { replace: true });
+  } catch (error) {
+    console.log("No se pudo conectar con el back end");
+  }
+}
+
   return (
     <CssVarsProvider>
       <Sheet
@@ -40,27 +73,33 @@ function SignUp() {
           <Typography level="body2">Create an account</Typography>
         </div>
         <TextField
-          name="email"
-          type="email"
+          value={name}
+          onChange={handleChangeName}
+          name="name"
+          type="text"
           placeholder="Juan Pérez"
           label="Name"
         />
         <TextField
+          value={mail}
+          onChange={handleChangeMail}
           name="email"
           type="email"
           placeholder="johndoe@email.com"
           label="Email"
         />
         <TextField
+          value={password}
+          onChange={handleChangePassword}
           name="password"
           type="password"
           placeholder="password"
           label="Password"
         />
         <Button
-          onClick={checkRegister()}
+          onClick={checkSingUp}
           sx={{
-            mt: 1, // margin top
+            mt: 1,
           }}
         >
           Sign up
@@ -68,6 +107,5 @@ function SignUp() {
       </Sheet>
     </CssVarsProvider>
   );
-}
-
+        };
 export default SignUp;

@@ -14,7 +14,7 @@ function ListaPokemon() {
   useEffect(() => {
     traerPokemon();
   }, []);
-
+  const token = localStorage.getItem("token");
   const traerToken = () => {
     return localStorage.getItem("token");
   };
@@ -26,6 +26,10 @@ function ListaPokemon() {
         throw new Error("Error en el servidor");
       }
       const pokemonFetch = await respuesta.json();
+      pokemonFetch.sort((a, b) => {
+        if (a.id > b.id) return 1;
+        if (a.id < b.id) return -1;
+      });
       setListaPokemon(pokemonFetch);
       setFoundPokemon(pokemonFetch);
     } catch (error) {
@@ -39,14 +43,14 @@ function ListaPokemon() {
   const filter = (e) => {
     const keyword = e.target.value;
     const results = [...listaPokemon].filter((pokemon) => {
-      return pokemon.nombre.toLowerCase().includes(keyword.toLowerCase());
+      return pokemon.name.toLowerCase().includes(keyword.toLowerCase());
     });
     setFoundPokemon(results);
   };
   const pokemonesAlfabeto = () => {
     const arrayNuevo = [...foundPokemon].sort((a, b) => {
-      if (a.nombre > b.nombre) return 1;
-      if (a.nombre < b.nombre) return -1;
+      if (a.name > b.name) return 1;
+      if (a.name < b.name) return -1;
     });
     setFoundPokemon(arrayNuevo);
   };
@@ -103,6 +107,11 @@ function ListaPokemon() {
           </h4>
           <img src={flecha} width="15px" height="25px" alt="flecha" />
         </button>
+          <Link style={{display: token ? "inline-block" : "none"}} className="botonAdd" href="/agregarPokemon">
+            <button className="botonAdd">
+              <span className="textoLogin">Add a new Pokemon</span>
+            </button>
+          </Link>
       </header>
       <nav>
         <input
