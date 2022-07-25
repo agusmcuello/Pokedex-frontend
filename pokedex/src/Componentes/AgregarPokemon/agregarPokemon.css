@@ -1,0 +1,11 @@
+.contenedor{
+    height: 100vh;
+    background: url("https://wallpapercave.com/wp/tuWSYqf.jpg") no-repeat;
+    background-size: cover;
+    border-radius: 1%;
+    margin: 0;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}

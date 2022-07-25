@@ -115,9 +115,9 @@ function DetallePokemon() {
           </div>
           <hr />
           <div className="hola">
-            {pokemon.firstAbility}
+            {pokemon.first_ability}
             <br />
-            {pokemon.secondAbility} <br />
+            {pokemon.second_ability} <br />
             <p>Moves</p>
           </div>
         </div>
