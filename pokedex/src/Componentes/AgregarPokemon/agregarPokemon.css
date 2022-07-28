@@ -1,11 +1,201 @@
 .contenedor{
-    height: 100vh;
+    height: 100%;
     background: url("https://wallpapercave.com/wp/tuWSYqf.jpg") no-repeat;
     background-size: cover;
     border-radius: 1%;
     margin: 0;
+    display: grid;
+    grid-template-areas: 
+    "icono principal habilidades"
+    "peso principal altura"
+    "ataque descripcion descripcion";
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    
 }
-form{
+input{
+    border: 2px solid black;
+    border-radius: 5px;
+}
+input::placeholder{
+    color: black;
+    text-align: center;
+}
+textarea::placeholder{
+    color: black;
+}
+.principal{
+    grid-area: principal;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.principalI{
+    background: linear-gradient(135deg, #74CB48 20%,#6493EB );
+    margin-top: 3%;
+    width: 40%;
+    height: 15%;
+}
+.principalI::-webkit-input-placeholder{
+    text-align: center;
+    font-weight: 600;
+}
+#titulo{
+    animation-name: anim;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    font-size: 60px;
+}
+h3{
+    color: aliceblue;
+    /* animation-name: anim;
+    animation-duration: 5s;
+    animation-iteration-count: infinite; */
+}
+.icono{
+    grid-area: icono;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: center;
+    width: 60%;
+    height: 45%;
+    margin-left: 20%;
+    margin-top: 40%;
+    border: solid 0.1px white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.2);
+}
+.iconoI{
+    background: linear-gradient(135deg, #F9CF30 20%,#F57D31 );
+}
+.pesoAltura{
+    background: linear-gradient(135deg, #F9CF30 20%,#F57D31 );
+}
+.habilidades{
+    grid-area: habilidades;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 60%;
+    height: 40%;
+    margin-right: 20%;
+    margin-top: 45%;
+    border: solid 0.2px white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.2);
+}
+.peso{
+    grid-area: peso;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 30%;
+    height: 60%;
+    margin-left: 20%;
+    margin-top: 20%;
+    border: solid 0.1px white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.2);
+}
+.altura{
+    grid-area: altura;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 80%;
+    margin-top: 20%;
+    border: solid 0.1px white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.2);
+}
+.descripcion{
+    grid-area: descripcion;
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    height: 17%;
+    border: solid 0.1px black;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0);
+    margin-left: 26%;
+    margin-top: 5%;
+}
+.descripcion button{
+    border: solid 0.1px black;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #74CB48 20%,#6493EB );;
+    text-align: center;
+    font-weight: 600;
+    font-size: 30px;
+    cursor: pointer;
+}
+.ataque{
+    grid-area: ataque;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: center;
+    width: 70%;
+    height: 60%;
+    margin-top: 15%;
+    margin-left: 20%;
+    border: solid 0.1px white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.2);
+}
+.ataque input{
+    width: 40%;
+    margin: 1%;
+    background: linear-gradient(135deg, #F9CF30 20%,#F57D31 );
+}
+.defensa{
+    position: absolute;
+    flex-direction: row;
+    text-align: center;
+    width: 20%;
+    height: 27%;
+    border: solid 0.1px white;
+    border-radius: 5px;
+    margin-left: 30%;
+    box-shadow: 2px 2px 2px 2px rgba(255, 255, 255, 0.2);
+}
+.defensa input{
+    width: 90%;
+    height: 18%;
+    margin: 1%;
+    background: linear-gradient(135deg, #F9CF30 20%,#F57D31 );
+    font-size: medium;
+}
+.colores{
+    grid-area: colores;
+}
+.modal{
+    width: 100%;
+    height: 400px;
+    background:url("https://wallpapercave.com/wp/tuWSYqf.jpg") no-repeat;
+    background-size: cover;
+    color: aliceblue;
+}
+.padre{
+    display: flex;
+    text-align: center;
+}
+#tituloModal{
+    animation-name: anim;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+.botones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.botones button{
+    width: 30%;
+    margin: 2%;
+    border-radius: 5px;
+}
+.share{
+    background-color: black;
 }

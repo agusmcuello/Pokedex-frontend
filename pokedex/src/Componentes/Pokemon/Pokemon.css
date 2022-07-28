@@ -2,8 +2,8 @@
     font-family: 'Poppins', sans-serif;
 }
 .iconoPokemon{
-    width: 75px;
-    height: 75px;
+    width: 175px;
+    height: 175px;
 }
 .link{
     width: 90%;
@@ -15,7 +15,7 @@
     transform: scale(1.15);
 }
 .tarjetaPokemon{
-    border: 1px solid black;
+    border: 3px solid black;
     border-radius: 1rem;
     width: 100%;
     display: flex;
@@ -23,20 +23,20 @@
     align-items: center;
 }
 #id{
-    margin-left: 75px;
+    margin-left: 80%;
     border: 1px solid rgb(236, 236, 236);
     border-radius: 10px;
-    width: 35%;
+    width: 25%;
     text-align: center;
     margin-top: 3%;
     margin-right: 10%;
-    font-size: x-small; 
+    font-size: small; 
     background-color: rgb(236, 236, 236);
 }
 
 .nombre{
-    font-size: small;
-    width: 100%;
+    font-size: medium;
+    width: 103%;
     height: 25px;
     text-align: center;
     color: rgb(236, 236, 236);;
@@ -51,4 +51,6 @@
 }
 .contenedorPokemon{
     display: flex;
+    width: 75%;
+    height: 50%;
 }

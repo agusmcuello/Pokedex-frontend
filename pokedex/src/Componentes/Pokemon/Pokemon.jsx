@@ -21,19 +21,20 @@ const Pokemon = ({ pokemon, traerPokemon }) => {
       console.log("No se pudo conectar con el back end");
     }
   };
-  const icono = require(`../Materiales/${pokemon.name.toLowerCase()}.png`);
   return (
     <div className="contenedorPokemon">
       <Button
         className="botonBorrar"
         onClick={borrarPokemon}
         style={{
-          color: "white",
+          color: "black",
           top: "5%",
-          width: "18px",
-          height: "20px",
+          width: "25px",
+          height: "25px",
           minHeight: "1px",
-          backgroundColor: "grey",
+          fontSize:"large",
+          minWidth:"1px",
+          backgroundColor: "white",
           padding: "1px",
           marginLeft: "5px",
           display: token ? "inline-block" : "none",
@@ -60,7 +61,7 @@ const Pokemon = ({ pokemon, traerPokemon }) => {
           >
             {pokemon.number}
           </div>
-          <img className="iconoPokemon" src={icono} alt="iconoPokemon" />
+          <img className="iconoPokemon" src={pokemon.icon} alt="iconoPokemon" />
           <div className="nombre" style={{ backgroundColor: pokemon.color }}>
             {pokemon.name}
           </div>

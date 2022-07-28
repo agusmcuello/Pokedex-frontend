@@ -1,11 +1,11 @@
 .contenedorDetalle{
     width: 390px;
-    height: 700px;
+    height: 760px;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 35%;
+    margin-left: 5%;
 }
 .headerPokemon{
     width: 100%;
@@ -30,7 +30,8 @@
 .contenedorInfo{
     background-color: white;
     width: 98%;
-    margin-top: 42%;
+    height: 66%;
+    margin-top: 45%;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
@@ -43,13 +44,10 @@
     box-shadow: 0.5px 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.5);
 }
 .about{
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-.baseState{
-    margin-top: 5%;
+    margin-top: 3%;
     margin-bottom: 3%;
 }
+
 #botonUno{
     margin-right: 10%;
 }
@@ -67,7 +65,7 @@
     margin-top: 1%;
     opacity: 0.2;
     width:230px;
-    height:220px;
+    height:230px;
     filter: invert(1);
 }
 .imagenPokemon{
@@ -104,18 +102,17 @@
     width: 100%;
     text-align: center;
 }
-.descripcion{
+.descripcions{
     margin-top: 5%;
     font-size: 12px;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 6%;
+    margin-right: 6%;
 }
 hr{ 
-  
-    border:         none;
-    border-left:    1px solid hsla(200, 10%, 50%,100);
-    height:         100%;
-    width:          1px;
+    border:none;
+    border-left:1px solid hsla(200, 10%, 50%,100);
+    height:100%;
+    width:1px;
     border-color: rgba(0, 0, 0, 0.5);      
 }
 .iconoWH{
@@ -124,24 +121,18 @@ hr{
 .w3-container{
     width: 100%;
 }
-.estadistica{
-    margin-top: 3%;
-}
 .w3-light-grey{
-    margin-top: 3%;
     width: 300px;
-    margin-left: 5%;
-}
-#barraInferior{
-    margin-bottom: 6%;
+    margin-left: 9%;
 }
 .contenedorEstadistica{
     width: 100%;
-    display: flex;
 }
 .habilidadUno{
     width: 100%;
+    height: 28px;
     display: flex;
+    align-items: center;
 }
 .barra{
     width: 80%;
@@ -158,9 +149,9 @@ hr{
 .hrEstadisticas{
     border-color: rgba(0, 0, 0, 0.2);
     position: absolute;
-    height: 122px;
-    margin-top: 80%;
-    margin-right: 61%;
+    height: 160px;
+    margin-top: 21.5%;
+    left: 10%;
 }
 .frame{
     width: 20px;
@@ -179,18 +170,21 @@ hr{
     width: 25px;
     height: 25px;
     top: 30%;
-    right: 40%;
+    left: 28.5%;
 }
 .linkUno{
     position: absolute;
     z-index: 2;
     width: 25px;
     height: 25px;
-    left: 37%;
-    top: 30%;
+    left: 7%;
+    top: 30.5%;
 }
 .numeroStats{
     font-size: small;
     position: absolute;
-    left: 39.5%;
+    left: 10.5%;
+}
+.p{
+    display: flex;
 }

@@ -1,0 +1,29 @@
+body{
+    background-image: url(https://wallpaperaccess.com/full/20999.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+@keyframes anim{
+    0% {color: #74CB48;} 
+   20% {color: #F57D31;} 
+   40% {color: #6493EB;} 
+   60% {color: #F9CF30;} 
+  80% {color: #FB5584;} 
+  100% {color: #74CB48;} 
+}
+.welcomePokedex{
+    animation-name: anim;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+.letraSignInto{
+    color: white;
+    font-size: 12px;
+}
+
+.donthave{
+    color: white;
+    font-size: 16px;
+}

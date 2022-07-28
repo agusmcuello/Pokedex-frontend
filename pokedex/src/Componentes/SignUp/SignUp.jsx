@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function SignUp() {
-  const [name, setName] = useState("");
+    const [name, setName] = useState("");
     const [mail, setMail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -26,9 +26,6 @@ function SignUp() {
       setPassword(e.target.value);
     };
 
-    const guardarToken = (token) => {
-      localStorage.setItem("token", token);
-    };
   
 const checkSingUp = async () => {
   try {
@@ -43,7 +40,6 @@ const checkSingUp = async () => {
       throw new Error("Error en el servidor");
     }
     const usuarioRegistrado = await respuesta.json();
-    guardarToken(usuarioRegistrado.token);
     navigate("/", { replace: true });
   } catch (error) {
     console.log("No se pudo conectar con el back end");

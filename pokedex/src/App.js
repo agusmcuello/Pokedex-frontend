@@ -6,7 +6,7 @@ import DetallePokemon from "./Componentes/DetallePokemon/DetallePokemon";
 import Login from "./Componentes/Login/Login";
 import SignUp from "./Componentes/SignUp/SignUp";
 import AgregarPokemon from "./Componentes/AgregarPokemon/AgregarPokemon";
-
+import NoteFound from "./Componentes/NotFound/NotFound";
 function App() {
   return (
     <div className="App">
@@ -21,6 +21,7 @@ function App() {
               element={<DetallePokemon />}
             ></Route>
             <Route path="/agregarPokemon" element={<AgregarPokemon/>}></Route>
+            <Route path="/NotFound" element={<NoteFound/>}></Route>
           </Routes>
         </BrowserRouter>
       </React.StrictMode>

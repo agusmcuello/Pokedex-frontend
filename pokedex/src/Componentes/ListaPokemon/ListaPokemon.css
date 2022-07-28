@@ -1,8 +1,15 @@
-*{
-    margin: 0;
+.divPadre{
+    display: flex;
+    justify-content: center;
+    background: url("https://fondosmil.com/fondo/32022.jpg") no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    border: solid 10px #74CB48;
+    border-radius: 5%;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 .contenedorLista{
-    width: 390px;
+    width: 70%;
     height: 100%;
     display: grid;
     grid-template-areas: 
@@ -15,30 +22,42 @@
     "pTrece pCatorce pQuince";
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 0.5fr 2fr 2fr 2fr 2fr 2fr;
-    background-color: rgb(137, 135, 135);
-    background-image:url(https://pbs.twimg.com/media/EkrLTLMXYAA97uU?format=jpg&name=large);
+    background:url("https://fondosmil.com/fondo/32022.jpg") no-repeat;
+    background-size: cover;
     filter: grayscale(25%);
-    border-radius: 12px;
-    margin-left: 35%;
+    margin-top: 5%;
+    border: solid 3px #6493EB;
+    border-radius: 5%;
+    padding-top: 3%;
+    
 }
 header{
     grid-area: header;
     display: flex;
+    width: 100%;
+    margin: 0;
 }
 .headerIzq{
     height: 43%;
     display: flex;
-    margin-left: 8%;
-    margin-top: 7%;
+    justify-content: right;
     background: none;
     border: none;
     filter: invert(1);
     cursor: pointer;
+    margin-top: 5%;
+    margin-right: 5%;
 }
 .textoAdvertencia{
-    width: 390px;
+    width: 1000px;
+    display: flex;
+    justify-content: center;
     text-align: center;
-    margin-top: 30%;
+    margin-top: 15%;
+    font-size: 30px;
+    animation-name: anim;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
 }
 @keyframes anim{
     0% {color: #74CB48;} 
@@ -49,15 +68,15 @@ header{
   100% {color: #74CB48;} 
 }   
 .pokedex{
-    margin-left: 5%;
+    margin-left: 11%;
     animation-name: anim;
     animation-duration: 5s;
     animation-iteration-count: infinite;
+    font-size: 60px;
 }
 .imagenHeader{
     display: block;
     margin-left: 5%;
-    margin-top: 5.5%;
     filter: invert(1);
     transition: all .3s ease-in-out;
     -webkit-transition: -webkit-transform 1s;
@@ -76,26 +95,30 @@ header{
     100%{-webkit-transform: rotate(360deg);}
 }
 .numeral{
-    font-size: small;
-    margin-right: 10%;
+    font-size: large;
 }
 nav{
     grid-area: nav;
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
 }
 .buscador{
-    width: 96%;
-    text-align: center;
+    width: 50%;
+    height: 35px;
     margin-left: 2%;
     border-radius: 0.5rem;
     border-color: rgba(0, 0, 0, 0.2);
 }
+.buscador::-webkit-input-placeholder{
+    text-align: center;
+}
 
 .textoLogin{
     color: rgb(86, 83, 83);
-}
-.botonLogin{
-
 }
 .botonAdd{
     border:1px solid rgb(236, 236, 236);
@@ -104,6 +127,32 @@ nav{
     background-color: rgb(236, 236, 236);
     min-width: 1px;
     min-height: 1px;        
+    left: 20px;
+    padding: 6px;
+    cursor: pointer;
+}
+.botonAdd:hover{
+    transform: scale(1.07);
+}
+.botonLogin:hover{
+    transform: scale(1.1);
+}
+.botonLogin{
+    width: 60px;
+    height: 40px;
+    border:1px solid rgb(236, 236, 236);
+    border-radius: 30%;
+    background-color: rgb(236, 236, 236);       
     left: 60px;
     padding: 6px;
+    cursor: pointer;
+}
+.contenedorPokemon{
+    margin-left: 10%;
+}
+.login{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -27,8 +27,8 @@ function ListaPokemon() {
       }
       const pokemonFetch = await respuesta.json();
       pokemonFetch.sort((a, b) => {
-        if (a.id > b.id) return 1;
-        if (a.id < b.id) return -1;
+        if (a.number > b.number) return 1;
+        if (a.number < b.number) return -1;
       });
       setListaPokemon(pokemonFetch);
       setFoundPokemon(pokemonFetch);
@@ -56,21 +56,22 @@ function ListaPokemon() {
   };
   const pokemonesId = () => {
     const arrayNuevoDos = [...foundPokemon].sort((a, b) => {
-      if (a.id > b.id) return 1;
-      if (a.id < b.id) return -1;
+      if (a.number > b.number) return 1;
+      if (a.number < b.number) return -1;
     });
     setFoundPokemon(arrayNuevoDos);
   };
 
   return (
-    <div className="contenedorLista">
+   <div className="divPadre">
+     <div className="contenedorLista">
       <header>
         <img
           id="header"
           className="imagenHeader"
           src={pokeball}
-          width="32px"
-          height="34px"
+          width="100px"
+          height="100px"
           alt="Pokeball"
         />
         <h1 className="pokedex">
@@ -78,40 +79,22 @@ function ListaPokemon() {
         </h1>
         <div className="login">
           <Link href="/login">
-            <Button
-              style={{
-                border: "1px solid rgb(236, 236, 236)",
-                borderRadius: "10px",
-                textDecoration: "none",
-                backgroundColor: "rgb(236, 236, 236)",
-                minHeight: "1px",
-                minWidth: "1px",
-                top: "28px",
-                left: "10px",
-                padding: "6px",
-              }}
-              className="botonLogin"
-            >
+            <button className="botonLogin">
               <span className="textoLogin">Login</span>
-            </Button>
+            </button>
           </Link>
         </div>
         <button
           onClick={
-            foundPokemon[0]?.id !== "#001" ? pokemonesId : pokemonesAlfabeto
+            foundPokemon[0]?.number !== "#001" ?  pokemonesId : pokemonesAlfabeto
           }
           className="headerIzq"
         >
           <h4 className="numeral">
-            {foundPokemon[0]?.id === "#001" ? "#" : "a/z"}
+            {foundPokemon[0]?.number === "#001" ? "#" : "a/z"}
           </h4>
-          <img src={flecha} width="15px" height="25px" alt="flecha" />
+          <img src={flecha} width="25px" height="30px" alt="flecha" />
         </button>
-          <Link style={{display: token ? "inline-block" : "none"}} className="botonAdd" href="/agregarPokemon">
-            <button className="botonAdd">
-              <span className="textoLogin">Add a new Pokemon</span>
-            </button>
-          </Link>
       </header>
       <nav>
         <input
@@ -120,6 +103,11 @@ function ListaPokemon() {
           type="search"
           onChange={filter}
         />
+          <Link style={{display: token ? "inline-block" : "none"}} className="botonAdd" href="/agregarPokemon">
+            <button className="botonAdd">
+              <span className="textoLogin">Add a new Pokemon</span>
+            </button>
+          </Link>
       </nav>
       {foundPokemon.length ? (
         mostrarPokemones
@@ -134,6 +122,7 @@ function ListaPokemon() {
         </div>
       )}
     </div>
+   </div>
   );
 }
 

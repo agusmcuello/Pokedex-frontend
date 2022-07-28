@@ -7,10 +7,12 @@ import pokebola from "../Materiales/Pokeball.png";
 import { Link, useParams } from "react-router-dom";
 import frame from "../Materiales/Frame.svg";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function DetallePokemon() {
   const { nombrePokemon } = useParams();
   const [pokemon, setPokemon] = useState({});
+  const navigate= useNavigate();
   useEffect(() => {
     const mostrarPokemon = async () => {
       try {
@@ -21,6 +23,9 @@ function DetallePokemon() {
           throw new Error("Error en el servidor");
         }
         const pokemonFetch = await respuesta.json();
+        if(!pokemonFetch.id){
+          navigate("/NotFound",{replace:true})
+        }
         setPokemon(pokemonFetch);
       } catch (error) {
         console.log("No se pudo conectar con el back end");
@@ -28,9 +33,6 @@ function DetallePokemon() {
     };
     mostrarPokemon();
   },[nombrePokemon]);
-  const icono =
-    pokemon.name &&
-    require(`../Materiales/${pokemon.name.toLowerCase()}.png`);
 
   const modificarPokemon = () => {
     try {
@@ -69,7 +71,7 @@ function DetallePokemon() {
           </span>
         </div>
       </div>
-      <img className="imagenPokemon" src={icono} alt="iconoBulbasaur" />
+      <img className="imagenPokemon" src={pokemon.icon} alt="iconoPokemon" />
       <div className="contenedorInfo">
         <div className="contenedorBotones">
           <button
@@ -121,7 +123,7 @@ function DetallePokemon() {
             <p>Moves</p>
           </div>
         </div>
-        <p className="descripcion">{pokemon.description}</p>
+        <p className="descripcions">{pokemon.description}</p>
         <h4 className="baseStates" style={{ color: pokemon.color }}>
           Base States
         </h4>
