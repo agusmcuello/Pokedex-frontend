@@ -5,21 +5,29 @@ import Pokemon from "../Pokemon/Pokemon";
 import flecha from "../Materiales/Arrow.svg";
 import { useState } from "react";
 import { useEffect } from "react";
-import Button from "@mui/joy/Button";
 import Link from "@mui/joy/Link";
 
 function ListaPokemon() {
   const [foundPokemon, setFoundPokemon] = useState([]);
   const [listaPokemon, setListaPokemon] = useState([]);
+  const [refresh, setRefresh] = useState(true);
+  const [loading, setLoading]= useState(true)
   useEffect(() => {
     traerPokemon();
   }, []);
-  const token = localStorage.getItem("token");
   const traerToken = () => {
     return localStorage.getItem("token");
   };
+  
+  const removeToken= ()=> {
+    localStorage.removeItem("token")
+    setRefresh(!refresh)
+  }
+  
+ 
   const traerPokemon = async () => {
     try {
+      setLoading(true)
       const token = traerToken();
       const respuesta = await fetch("http://localhost:8080/pokemon");
       if (!respuesta.ok) {
@@ -35,6 +43,9 @@ function ListaPokemon() {
     } catch (error) {
       console.log("No se pudo conectar con el back end");
     }
+    setTimeout(() => {
+      setLoading(false) 
+    }, 1500);
   };
 
   const mostrarPokemones = foundPokemon.map((pokemon) => (
@@ -61,9 +72,8 @@ function ListaPokemon() {
     });
     setFoundPokemon(arrayNuevoDos);
   };
-
-  return (
-   <div className="divPadre">
+    return (
+      <div className="divPadre">
      <div className="contenedorLista">
       <header>
         <img
@@ -78,11 +88,17 @@ function ListaPokemon() {
           <b>Pokédex</b>
         </h1>
         <div className="login">
-          <Link href="/login">
+          {!traerToken()&&<Link href="/login">
             <button className="botonLogin">
               <span className="textoLogin">Login</span>
             </button>
-          </Link>
+          </Link>}
+          
+           {traerToken()&& <button onClick={removeToken} className="botonLogout">
+              <span className="textoLogin">Logout</span>
+            </button>}
+        
+      
         </div>
         <button
           onClick={
@@ -103,14 +119,15 @@ function ListaPokemon() {
           type="search"
           onChange={filter}
         />
-          <Link style={{display: token ? "inline-block" : "none"}} className="botonAdd" href="/agregarPokemon">
+          {traerToken()&&<Link className="botonAdd" href="/agregarPokemon">
             <button className="botonAdd">
               <span className="textoLogin">Add a new Pokemon</span>
             </button>
-          </Link>
+          </Link>}
       </nav>
+
       {foundPokemon.length ? (
-        mostrarPokemones
+        loading? <div class="pokemon"></div>:mostrarPokemones
       ) : (
         <div className="textoAdvertencia">
           <p>
@@ -124,6 +141,7 @@ function ListaPokemon() {
     </div>
    </div>
   );
-}
+  }
+
 
 export default ListaPokemon;

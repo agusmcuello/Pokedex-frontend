@@ -1,7 +1,7 @@
 body{
-    background-image: url(https://wallpaperaccess.com/full/20999.jpg);
-   background-repeat: no-repeat;
-   background-size: cover;
+    background-image: url("https://fondosmil.com/fondo/32022.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 @keyframes anim{
@@ -16,14 +16,31 @@ body{
     animation-name: anim;
     animation-duration: 5s;
     animation-iteration-count: infinite;
+    font-size: 25px;
 }
 
 .letraSignInto{
     color: white;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .donthave{
     color: white;
     font-size: 16px;
+}
+.inputLogin::placeholder{
+    color: rgba(0, 0, 0, 0.5);
+    text-align: left;
+}
+.datosLogin{
+    margin: 0;
+}
+.datosLogin p{
+    color: aliceblue;
+}
+.alertaLogin{
+    width: 250px;
+    position: absolute;
+    top: 25%;
+    left: 40%;
 }

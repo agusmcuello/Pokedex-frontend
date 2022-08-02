@@ -42,7 +42,8 @@ function DetallePokemon() {
   };
 
   return (
-    <div
+    <div className="padre">
+      <div
       style={{ backgroundColor: pokemon.color, borderColor: pokemon.color }}
       className="contenedorDetalle"
     >
@@ -295,6 +296,14 @@ function DetallePokemon() {
           </div>
         </div>
       </div>
+    </div>
+    <div className="contenedorIzq" style={{borderColor:pokemon.color}}>
+      <img className="pokemonGrande" clas src={pokemon.icon} alt="iconoPokemon" />
+      <h1 className="pokeTitulo" style={{color:pokemon.color}}>{pokemon.name}</h1>
+      <div>
+    
+      </div>
+    </div>
     </div>
   );
 }

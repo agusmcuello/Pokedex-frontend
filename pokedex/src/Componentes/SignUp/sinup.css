@@ -1,0 +1,20 @@
+.letraCrear{
+    color: white;
+    font-size: 16px;
+}
+.SingUp{
+    animation-name: anim;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    font-size: 25px;
+}
+.inputLogin::placeholder{
+    color: rgba(0, 0, 0, 0.5);
+    text-align: left;
+}
+.datosLogin{
+    margin: 0;
+}
+.datosLogin p{
+    color: aliceblue;
+}

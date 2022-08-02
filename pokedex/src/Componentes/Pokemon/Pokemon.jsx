@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import Button from "@mui/joy/Button";
 
 const Pokemon = ({ pokemon, traerPokemon }) => {
-  const token = localStorage.getItem("token");
-
+  
   const borrarPokemon = async () => {
     try {
+      const token = localStorage.getItem("token");
       const respuesta = await fetch(
         `http://localhost:8080/borrarPokemon/${pokemon.name}`,
         { method: "DELETE", headers: { Authorization: token } }
@@ -37,7 +37,7 @@ const Pokemon = ({ pokemon, traerPokemon }) => {
           backgroundColor: "white",
           padding: "1px",
           marginLeft: "5px",
-          display: token ? "inline-block" : "none",
+          display: localStorage.getItem("token") ? "inline-block" : "none",
         }}
       >
         <span

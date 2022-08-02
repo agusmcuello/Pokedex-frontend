@@ -1,6 +1,6 @@
 .contenedorDetalle{
     width: 390px;
-    height: 760px;
+    height: 700px;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
@@ -30,7 +30,7 @@
 .contenedorInfo{
     background-color: white;
     width: 98%;
-    height: 66%;
+    height: 63%;
     margin-top: 45%;
     border-radius: 1rem;
     display: flex;
@@ -107,6 +107,7 @@
     font-size: 12px;
     margin-left: 6%;
     margin-right: 6%;
+    margin-bottom: 0%;
 }
 hr{ 
     border:none;
@@ -124,13 +125,14 @@ hr{
 .w3-light-grey{
     width: 300px;
     margin-left: 9%;
+    margin-top: 6px;
 }
 .contenedorEstadistica{
     width: 100%;
 }
 .habilidadUno{
     width: 100%;
-    height: 28px;
+    height: 20px;
     display: flex;
     align-items: center;
 }
@@ -138,19 +140,21 @@ hr{
     width: 80%;
     display: flex;
     margin-left: 5px;
+    margin-bottom: 10px;
 }
 .habilidad{
     width: 10%;
     display: flex;
     justify-content: end;
     margin-right: 7%;
+    margin-bottom: 11px;
 }
 
 .hrEstadisticas{
     border-color: rgba(0, 0, 0, 0.2);
     position: absolute;
-    height: 160px;
-    margin-top: 21.5%;
+    height: 120px;
+    margin-top: 20%;
     left: 10%;
 }
 .frame{
@@ -185,6 +189,34 @@ hr{
     position: absolute;
     left: 10.5%;
 }
-.p{
+.contenedorIzq{
+    width: 50%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 13%;
+    margin-top: 5%;
+    margin-bottom: 8%;
+    border: 2px solid;
+    animation: fadeIn 3s ease;
+}
+.pokemonGrande{
+    width: 350px;
+    height: 350px;
+    margin-top: 5%;
+}
+.pokemonGrande:hover{
+    animation: heyjump .5s infinite;
+}
+.pokeTitulo{
+    font-size: 60px;
+}
+@keyframes fadeIn{
+    0%{ opacity: 0;
+        filter: blur(20px);
+    }
+    10%{
+        opacity: 1;
+        filter: brightness(1) blur(10px);
+    }
 }

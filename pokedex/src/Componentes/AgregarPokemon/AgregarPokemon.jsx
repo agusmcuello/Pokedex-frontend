@@ -3,8 +3,9 @@ import "./agregarPokemon.css";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
+import copy from "../Materiales/copy.png";
+import { Alert,AlertTitle } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -17,6 +18,8 @@ const style = {
 };
 
 function AgregarPokemon() {
+  const [modalDatos, setModalDatos] = useState(false)
+  const [modalRegistro, setModalRegistro] = useState(false)
   const [open, setOpen] = React.useState(false);
   const [name, setName] = useState("");
   const [color, setColor] = useState("");
@@ -39,7 +42,13 @@ function AgregarPokemon() {
   let navigate = useNavigate();
 
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+  setOpen(false);
+  setModalRegistro(false);
+  setModalDatos(false);
+  }
+  const handleModalRegistro =()=> setModalRegistro(true)
+  const handleModalDatos = ()=> setModalDatos(true)
 
   const handleChangeName = (e) => {
     setName(e.target.value);
@@ -95,9 +104,17 @@ function AgregarPokemon() {
   const handleChangeSpd = (e) => {
     setSpd(e.target.value);
   };
-
+  const validarDatos = ()=>{
+    if(name&&color&&type&&description&&hp&&atk&&def&&satk&&sdef&&spd&&weight&&height&&icon&&first_ability&&number){
+      return true
+    }else{
+        return setModalDatos(true)
+      }
+    }
+  const token = localStorage.getItem("token");
   const checkNewPokemon = async () => {
     try {
+      const token = localStorage.getItem("token");
       const respuesta = await fetch("http://localhost:8080/agregarPokemon", {
         method: "POST",
         body: JSON.stringify({
@@ -122,17 +139,19 @@ function AgregarPokemon() {
         }),
         headers: {
           "Content-Type": "application/json",
+           Authorization: token 
         },
       });
       if (!respuesta.ok) {
-        throw new Error("Error en el servidor");
+        const pokemonIngresado = await respuesta.json();
       }
-      const pokemonIngresado = await respuesta.json();
     } catch (error) {
       console.log("No se pudo conectar con el back end");
     }
   };
-
+  
+  const link = `http://localhost:3000/DetallePokemon/${name}`;
+  const register = "http://localhost:3000/sign-up"
   return (
     <div className="contenedor">
       <aside className="icono">
@@ -142,7 +161,7 @@ function AgregarPokemon() {
           type="url"
           value={icon}
           onChange={handleChangeIcon}
-          placeholder="url"
+          placeholder="url *"
         />
       </aside>
 
@@ -155,21 +174,21 @@ function AgregarPokemon() {
           type="text"
           value={name}
           onChange={handleChangeName}
-          placeholder="Name"
+          placeholder="Name *"
         />
         <input
           className="principalI"
           type="text"
           value={number}
           onChange={handleChangeNumber}
-          placeholder="Pokemon-ID"
+          placeholder="Pokemon-ID *"
         />
         <input
           className="principalI"
           type="text"
           value={type}
           onChange={handleChangeType}
-          placeholder="Type"
+          placeholder="Type *"
         />
       </main>
 
@@ -180,7 +199,7 @@ function AgregarPokemon() {
           type="text"
           value={first_ability}
           onChange={handleChangeFirst_ability}
-          placeholder="Ability"
+          placeholder="Ability *"
         />
         <input
           className="iconoI"
@@ -198,7 +217,7 @@ function AgregarPokemon() {
           type="text"
           value={weight}
           onChange={handleChangeWeight}
-          placeholder="00,00kg"
+          placeholder="00,00kg *"
         />
         <h3>Height</h3>
         <input
@@ -206,7 +225,7 @@ function AgregarPokemon() {
           type="text"
           value={height}
           onChange={handleChangeHeight}
-          placeholder="0,0m"
+          placeholder="0,0m *"
         />
       </section>
 
@@ -219,26 +238,32 @@ function AgregarPokemon() {
           name="Text1"
           cols="40"
           rows="5"
-          placeholder="It is a very good pokemon and it likes tangerines..."
+          placeholder="It is a very good pokemon and it likes tangerines... *"
         ></textarea>
       </section>
 
       <article className="descripcion">
         <button
           onClick={() => {
+            if(token){
+              if(validarDatos())
             checkNewPokemon();
-            handleOpen();
+            handleOpen();}
+            else{
+              handleModalRegistro()
+            }
           }}
         >
           Add
         </button>
+        <p className="mensajeCampos"><b>* Required fields</b></p>
         <div className="defensa">
           <h3>His color</h3>
           <input
             type="text"
             value={color}
             onChange={handleChangeColor}
-            placeholder="Color"
+            placeholder="Color *"
           />
           <input
             type="text"
@@ -260,64 +285,74 @@ function AgregarPokemon() {
           type="text"
           value={hp}
           onChange={handleChangeHp}
-          placeholder="HP"
+          placeholder="HP *"
         />
         <input
           type="text"
           value={atk}
           onChange={handleChangeAtk}
-          placeholder="ATK"
+          placeholder="ATK *"
         />
         <input
           type="text"
           value={def}
           onChange={handleChangeDef}
-          placeholder="DEF"
+          placeholder="DEF *"
         />
         <input
           type="text"
           value={satk}
           onChange={handleChangeSatk}
-          placeholder="SATK"
+          placeholder="SATK *"
         />
         <input
           type="text"
           value={sdef}
           onChange={handleChangeSdef}
-          placeholder="SDEF"
+          placeholder="SDEF *"
         />
         <input
           type="text"
           value={spd}
           onChange={handleChangeSpd}
-          placeholder="SPD"
+          placeholder="SPD *"
         />
         <div>
-         
           <Modal open={open} onClose={handleClose}>
             <Box sx={style}>
-              <body className="padre">
+              <div className="padre">
                 <div className="modal">
                   <h1 id="tituloModal">Congratulations!</h1>
                   <h4>You just created a new Pokemon</h4>
                   <div className="botones">
-                    <Link to={`/DetallePokemon/${name}`}>
+                    <Link className="modalLinks" to={`/DetallePokemon/${name}`}>
                       <button>Look at it</button>
                     </Link>
-                    <Link to={"/agregarPokemon"}>
-                      <button>Create a new one</button>
+                    <Link className="modalLinks" to={"/agregarPokemon"}>
+                      <button onClick={handleClose}>Create a new one</button>
                     </Link>
-                    <Link to={"/"}>
+                    <Link className="modalLinks" to={"/"}>
                       <button>Go to the Pokedex</button>
                     </Link>
                   </div>
                   <p className="share">
-                    Share your Pokemon:{" "}
-                    {`http://localhost:3000/DetallePokemon/${name}`}
+                    Share your Pokemon: <a href={link}>{link}</a> <button className="botonCopy" onClick={()=>navigator.clipboard.writeText(link)}><img className="iconoCopy" src={copy} /></button>
                   </p>
                 </div>
-              </body>
+              </div>
             </Box>
+          </Modal>
+          <Modal open={modalRegistro} onClose={handleClose}>
+          <Alert className="alertaRegistro" severity="error">
+           <AlertTitle>Error</AlertTitle>
+           This option is reserved only for users — <strong><a href={register}>Sing up here!</a></strong>
+          </Alert>
+          </Modal>
+          <Modal open={modalDatos} onClose={handleClose}>
+          <Alert className="alertaDato" severity="warning">
+           <AlertTitle>Warning</AlertTitle>
+           Fill in the required fields
+          </Alert>
           </Modal>
         </div>
       </div>

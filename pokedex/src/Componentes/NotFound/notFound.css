@@ -1,0 +1,55 @@
+.contenenedorNotFound{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    
+}
+.imagenFondo{
+    background-image: url(https://images3.alphacoders.com/677/677583.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 70%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 1%;
+    border: solid 4px #6493EB;
+    border-radius: 5px;
+}
+.signoInterrogacion{
+    margin-left: 10%;
+    width: 30%;
+    height: 400px;
+    margin-top: 1%;
+}
+.colorLetraNotFound{
+    color: black;
+}
+.enlacesNotFound{
+    margin-left: 10%;
+    margin-bottom: 15px;
+}
+.tituloNotFound{
+    margin-left: 2.5%;
+    animation-name: anim;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    font-size: 35px;
+}
+.contenedorTitulo{
+    width: 100%;
+    background-color: black;
+}
+
+.botonNotFound{
+    width: 40%;
+    margin-left: 20%;
+    background: linear-gradient(135deg, #F9CF30 20%,#F57D31 );
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}

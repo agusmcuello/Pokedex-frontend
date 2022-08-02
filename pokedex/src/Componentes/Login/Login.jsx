@@ -1,18 +1,22 @@
 import React from "react";
-import "./login.css"
+import "./login.css";
 import { CssVarsProvider } from "@mui/joy/styles";
 import Sheet from "@mui/joy/Sheet";
 import Typography from "@mui/joy/Typography";
-import TextField from "@mui/joy/TextField";
 import Button from "@mui/joy/Button";
 import Link from "@mui/joy/Link";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Alert, AlertTitle } from "@mui/material";
+import Modal from "@mui/material/Modal";
 
 function Login() {
+  const [modalLogin, setModalLogin] = useState(null);
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
 
+  const hanldeModalLogin = (error) => setModalLogin(error);
+  const handleClose = () => setModalLogin(null);
   let navigate = useNavigate();
 
   const handleChangeEmail = (e) => {
@@ -35,78 +39,84 @@ function Login() {
           "Content-Type": "application/json",
         },
       });
+      const respuestaCorrecta = await respuesta.json();
       if (!respuesta.ok) {
-        throw new Error("Error en el servidor");
+        // alertrespuestaCorrecta.error)
+        hanldeModalLogin(respuestaCorrecta.error);
+      } else {
+        guardarToken(respuestaCorrecta.token);
+        navigate("/", { replace: true });
       }
-      const usuarioIngresado = await respuesta.json();
-      guardarToken(usuarioIngresado.token);
-      navigate("/", { replace: true });
     } catch (error) {
       console.log("No se pudo conectar con el back end");
     }
   };
+  
   return (
-    <div className="contenedorLogin">
-        <CssVarsProvider>
+    <>
+      <CssVarsProvider>
         <Sheet
           sx={{
-            maxWidth: 300,
-            mx: "auto",
-            my: 4,
-            py: 3,
-            px: 2,
+            maxWidth: 350,
+            mx: 70,
+            my: 15,
+            py: 1,
+            px: 4,
             display: "flex",
             flexDirection: "column",
-            gap: 2,
+            gap: 4,
             borderRadius: "sm",
             boxShadow: "md",
-            backgroundImage: "url(https://image.winudf.com/v2/image/Y29tLm5hYWppeWEucG9rZW1vbl9zY3JlZW5zaG90c180X2U4MGU1YTk3/screen-4.jpg?fakeurl=1&type=.webp)",
+            backgroundImage:
+              "url(https://image.winudf.com/v2/image/Y29tLm5hYWppeWEucG9rZW1vbl9zY3JlZW5zaG90c180X2U4MGU1YTk3/screen-4.jpg?fakeurl=1&type=.webp)",
             backgroundSize: "cover",
           }}
         >
-  
           <div>
-            <Typography level="h4" component="h1">
+            <h3>
               <b className="welcomePokedex">Welcome to Pokedex!</b>
-            </Typography>
-            <Typography level="body2">
-              <h6 className="letraSignInto">Sign in to continue</h6>
-              </Typography>
+            </h3>
+            <h5 className="letraSignInto">Sign in to continue</h5>
           </div>
-          <TextField
-            value={mail}
-            onChange={handleChangeEmail}
-            name="email"
-            type="email"
-            placeholder="pikachu@email.com"
-            label="Email"
-          />
-          <TextField
-            value={password}
-            onChange={handleChangePassword}
-            name="password"
-            type="password"
-            placeholder="password"
-            label="Password"
-          />
-          <Button
-            onClick={checkLogin}
-            sx={{
-              mt: 1,
-            }}
-          >
-            Log in
-          </Button>
+          <div className="datosLogin">
+            <p>Email</p>
+            <input
+              className="inputLogin"
+              value={mail}
+              onChange={handleChangeEmail}
+              name="email"
+              type="email"
+              placeholder="pikachu@email.com"
+            />
+          </div>
+          <div className="datosLogin">
+            <p>Password</p>
+            <input
+              className="inputLogin"
+              value={password}
+              onChange={handleChangePassword}
+              name="password"
+              type="password"
+              placeholder="1234"
+            />
+          </div>
+          <Button onClick={checkLogin}>Log in</Button>
           <Typography
             endDecorator={<Link href="/sign-up">Sign up</Link>}
             fontSize="sm"
             sx={{ alignSelf: "center" }}
           >
-           <h6 className="donthave"> Don't have an account? </h6>
+            <h6 className="donthave"> Don't have an account? </h6>
           </Typography>
         </Sheet>
       </CssVarsProvider>
-    </div>
+      <Modal open={modalLogin} onClose={handleClose}>
+        <Alert className="alertaLogin" severity="warning">
+          <AlertTitle>Warning</AlertTitle>
+          {modalLogin}
+        </Alert>
+      </Modal>
+    </>
   );
 }
 
