@@ -3,22 +3,27 @@ import "./sinup.css"
 import { CssVarsProvider } from "@mui/joy/styles";
 import Sheet from "@mui/joy/Sheet";
 import Typography from "@mui/joy/Typography";
-import TextField from "@mui/joy/TextField";
 import Button from "@mui/joy/Button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AlertTitle, Alert, Modal } from "@mui/material";
 
 function SignUp() {
+    const [modalRegistro, setModalRegistro]= useState(false)
     const [name, setName] = useState("");
     const [mail, setMail] = useState("");
     const [password, setPassword] = useState("");
 
     let navigate = useNavigate();
+
+    const handleClose=()=>{
+      setModalRegistro(false)
+    }
     
     const handleChangeName = (e) => {
       setName(e.target.value);
     };
-
+    
     const handleChangeMail = (e) => {
       setMail(e.target.value);
     };
@@ -26,10 +31,17 @@ function SignUp() {
     const handleChangePassword = (e) => {
       setPassword(e.target.value);
     };
-
-  
-const checkSingUp = async () => {
-  try {
+    
+    const handleModalRegistro=()=> {
+      if(name&&password&&mail){
+        return true
+      }else{
+        setModalRegistro(true)
+      }
+    }
+    
+    const checkSingUp = async () => {
+      try {
     const respuesta = await fetch("http://localhost:8080/register", {
       method: "POST",
       body: JSON.stringify({name, mail, password }),
@@ -48,6 +60,7 @@ const checkSingUp = async () => {
 }
 
   return (
+    <>
     <CssVarsProvider>
       <Sheet
         sx={{
@@ -103,7 +116,12 @@ const checkSingUp = async () => {
           />
           </div>
         <Button
-          onClick={checkSingUp}
+          onClick={()=>{
+           if(handleModalRegistro()){
+            return checkSingUp()  
+          } else{
+            setModalRegistro(true)
+          }}}
           sx={{
             mt: 1,
           }}
@@ -112,6 +130,13 @@ const checkSingUp = async () => {
         </Button>
       </Sheet>
     </CssVarsProvider>
+    <Modal open={modalRegistro} onClose={handleClose}>
+    <Alert className="alertaLogin" severity="warning">
+      <AlertTitle>Warning</AlertTitle>
+      Fill all the fields
+    </Alert>
+  </Modal>
+  </>
   );
         };
 export default SignUp;

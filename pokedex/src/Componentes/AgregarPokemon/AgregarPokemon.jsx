@@ -20,6 +20,7 @@ const style = {
 function AgregarPokemon() {
   const [modalDatos, setModalDatos] = useState(false)
   const [modalRegistro, setModalRegistro] = useState(false)
+  const [modalStats, setModalStats]= useState(false)
   const [open, setOpen] = React.useState(false);
   const [name, setName] = useState("");
   const [color, setColor] = useState("");
@@ -46,9 +47,11 @@ function AgregarPokemon() {
   setOpen(false);
   setModalRegistro(false);
   setModalDatos(false);
+  setModalStats(false)
   }
   const handleModalRegistro =()=> setModalRegistro(true)
   const handleModalDatos = ()=> setModalDatos(true)
+  const handleModalStats =()=> setModalStats(true)
 
   const handleChangeName = (e) => {
     setName(e.target.value);
@@ -109,6 +112,13 @@ function AgregarPokemon() {
       return true
     }else{
         return setModalDatos(true)
+      }
+    }
+    const validarStats =()=>{
+      if(hp>0&&hp<=200&&atk>0&&atk<=200&&def>0&&def<=200&&satk>0&&satk<=200&&sdef>0&&sdef<=200&&spd>0&&spd<=200){
+        return true
+      }else{
+        return setModalStats(true)
       }
     }
   const token = localStorage.getItem("token");
@@ -246,8 +256,8 @@ function AgregarPokemon() {
         <button
           onClick={() => {
             if(token){
-              if(validarDatos())
-            checkNewPokemon();
+              if(validarDatos()&&validarStats())
+            // checkNewPokemon();
             handleOpen();}
             else{
               handleModalRegistro()
@@ -352,6 +362,12 @@ function AgregarPokemon() {
           <Alert className="alertaDato" severity="warning">
            <AlertTitle>Warning</AlertTitle>
            Fill in the required fields
+          </Alert>
+          </Modal>
+          <Modal open={modalStats} onClose={handleClose}>
+          <Alert className="alertaDato" severity="warning">
+           <AlertTitle>Warning</AlertTitle>
+           Basic stats must be between 1 and 200
           </Alert>
           </Modal>
         </div>
