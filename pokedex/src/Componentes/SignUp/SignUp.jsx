@@ -118,7 +118,7 @@ function SignUp() {
         <Button
           onClick={()=>{
            if(handleModalRegistro()){
-            return checkSingUp()  
+            return checkSingUp();
           } else{
             setModalRegistro(true)
           }}}

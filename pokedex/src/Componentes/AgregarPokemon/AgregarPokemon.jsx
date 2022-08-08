@@ -256,9 +256,9 @@ function AgregarPokemon() {
         <button
           onClick={() => {
             if(token){
-              if(validarDatos()&&validarStats())
-            // checkNewPokemon();
-            handleOpen();}
+              if(validarDatos()&&validarStats()){
+            checkNewPokemon();
+            handleOpen()};}
             else{
               handleModalRegistro()
             }
