@@ -59,6 +59,7 @@ const Pokemon = ({ pokemon, traerPokemon }) => {
             style={{ color: pokemon.color, borderColor: pokemon.color }}
             className="id"
           >
+            {console.log(pokemon)}
             {pokemon.number}
           </div>
           <img className="iconoPokemon" src={pokemon.icon} alt="iconoPokemon" />

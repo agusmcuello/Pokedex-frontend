@@ -50,11 +50,11 @@ function ListaPokemon() {
 
   const mostrarPokemones = foundPokemon.map((pokemon) => (
     <Pokemon key={pokemon.id} pokemon={pokemon} traerPokemon={traerPokemon} />
-  ));
-  const filter = (e) => {
-    const keyword = e.target.value;
-    const results = [...listaPokemon].filter((pokemon) => {
-      return pokemon.name.toLowerCase().includes(keyword.toLowerCase());
+    ));
+    const filter = (e) => {
+      const keyword = e.target.value;
+      const results = [...listaPokemon].filter((pokemon) => {
+        return pokemon.name.toLowerCase().includes(keyword.toLowerCase());
     });
     setFoundPokemon(results);
   };
